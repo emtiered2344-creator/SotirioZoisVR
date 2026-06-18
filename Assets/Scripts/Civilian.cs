@@ -15,6 +15,9 @@ public class Civilian : Injury
     public float bloodLossRate;
     public bool isInjured;
 
+    public GameObject bodyPart;
+    public GameObject headPart;
+
     void Start()
     {
         currentState = CivilianState.Calm;
@@ -40,9 +43,15 @@ public class Civilian : Injury
                     for(int i = 0; i < numOfInjuries; i++)
                     {
                         //roll for body part.
-                        WoundRoll();//roll for injuries and wounds, instantiate on body parts
+                        int bodyRoll = Random.Range(0, 101);
+                        if(bodyRoll <=80){
+                            WoundRoll(bodyPart.transform); //roll for injuries and wounds, instantiate on body parts
+                        }
+                        else
+                        {
+                            WoundRoll(headPart.transform); //roll for injuries and wounds, instantiate on head part
+                        }
                     }
-                    
                 }
 
                 bloodLevel -= bloodLossRate * Time.deltaTime;
