@@ -594,7 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: fb439e14844f9f34798e7d942e2cb372, type: 2}
+  m_Material: {fileID: 0}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
