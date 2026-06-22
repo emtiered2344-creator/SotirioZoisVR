@@ -9,6 +9,8 @@ public class Wound : MonoBehaviour
         Healed
     }
 
+    public WoundData woundData; // Reference to the wound data for this specific wound instance
+
     [Header("Wound Properties")]
     public float radius = 0.05f;
     
@@ -22,9 +24,11 @@ public class Wound : MonoBehaviour
 
     public WoundStage currentStage = WoundStage.Bleeding;
     private int pointsCompleted = 0;
+    private int currentLoop = 1;
+    private int woundSeverity = 1; // Number of loops required (set from woundData)
     private bool isFailed = false;
     private GameObject[] bandagingPoints;
-    private bool[] pointsTouched;
+    public bool[] pointsTouched;
     private float lastContactTime = 0f;
     private bool pointsGenerated = false;
 
@@ -37,6 +41,18 @@ public class Wound : MonoBehaviour
     {
         SetPointsVisibility(false);
         currentStage = WoundStage.Bleeding;
+        
+        // Set wound severity based on woundData
+        if (woundData != null)
+        {
+            woundSeverity = woundData.woundSeverity switch
+            {
+                WoundData.WoundSeverity.Minor => 1,
+                WoundData.WoundSeverity.Severe => 2,
+                WoundData.WoundSeverity.Critical => 3,
+                _ => 1
+            };
+        }
     }
 
     void Update()
@@ -83,14 +99,30 @@ public class Wound : MonoBehaviour
             return;
         }
 
-        // Increase radius if not a head
+        // Increase radius based on body part tag
         float effectiveRadius = radius;
         float prefabScale = 0.1f;
 
-        if (transform.parent != null && !transform.parent.name.ToLower().Contains("head"))
+        if (transform.parent != null)
         {
-            effectiveRadius = radius * 2.3f;
-            prefabScale = 0.15f; // Scale the prefab size for non-head parts
+            if (transform.parent.CompareTag("Head"))
+            {
+                // Head uses default radius
+                effectiveRadius = radius * 2f;
+                prefabScale = 0.1f;
+            }
+            else if (transform.parent.CompareTag("Torso") || transform.parent.CompareTag("Legs"))
+            {
+                // Torso and Legs have larger wounds
+                effectiveRadius = radius * 5f;
+                prefabScale = 0.2f;
+            }
+            else if (transform.parent.CompareTag("Arms"))
+            {
+                // Arms have medium wounds
+                effectiveRadius = radius * 2f;
+                prefabScale = 0.15f;
+            }
         }
 
         // Get surface normal via raycast for robust positioning
@@ -184,7 +216,19 @@ public class Wound : MonoBehaviour
 
         if (pointsCompleted >= pointCount)
         {
-            OnHealed();
+            // Check if we've completed all required loops
+            if (currentLoop >= woundSeverity)
+            {
+                OnHealed();
+            }
+            else
+            {
+                // Reset for next loop
+                currentLoop++;
+                pointsCompleted = 1;
+                System.Array.Clear(pointsTouched, 0, pointsTouched.Length);
+                SetPointsVisibility(true);
+            }
         }
     }
 
@@ -194,13 +238,14 @@ public class Wound : MonoBehaviour
         currentStage = WoundStage.Healed;
         if (WoundManager.Instance != null)
             WoundManager.Instance.WoundHealed(this);
-        Destroy(gameObject, 1f); // TODO: change to decal bandaged
+        Destroy(gameObject); // TODO: change to decal bandaged
     }
 
     void OnFailed()
     {
         //currentStage = WoundStage.Bleeding;
         pointsCompleted = 0;
+        currentLoop = 1;
         System.Array.Clear(pointsTouched, 0, pointsTouched.Length);
         isFailed = false;
         lastContactTime = Time.time;
@@ -222,10 +267,24 @@ public class Wound : MonoBehaviour
     {
         float displayRadius = radius;
         float gizmoScale = 1f;
-        if (transform.parent != null && !transform.parent.name.ToLower().Contains("head"))
+        
+        if (transform.parent != null)
         {
-            displayRadius = radius * 2f;
-            gizmoScale = 1.5f;
+            if (transform.parent.CompareTag("Head"))
+            {
+                displayRadius = radius;
+                gizmoScale = 1f;
+            }
+            else if (transform.parent.CompareTag("Torso") || transform.parent.CompareTag("Legs"))
+            {
+                displayRadius = radius * 3.5f;
+                gizmoScale = 2f;
+            }
+            else if (transform.parent.CompareTag("Arms"))
+            {
+                displayRadius = radius * 2.3f;
+                gizmoScale = 1.5f;
+            }
         }
 
         Gizmos.color = Color.red;

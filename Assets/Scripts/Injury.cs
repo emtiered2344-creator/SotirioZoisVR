@@ -27,19 +27,19 @@ public class Injury : MonoBehaviour
         {
             Debug.Log("Minor Injury");
             injuryType = InjuryType.Minor;
-            numOfInjuries = 10;
+            numOfInjuries = 2;
         }
         else if (roll > 65 && roll <= 75)
         {
             Debug.Log("Severe Injury");
             injuryType = InjuryType.Severe;
-            numOfInjuries = 10;
+            numOfInjuries = 3;
         }
         else
         {
             Debug.Log("Critical Injury");
             injuryType = InjuryType.Critical;
-            numOfInjuries = 10;
+            numOfInjuries = 4;
         }
     }
 

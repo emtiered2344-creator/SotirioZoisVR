@@ -7,6 +7,9 @@ TagManager:
   - New tag
   - BandagePoint
   - Head
+  - Torso
+  - Legs
+  - Arms
   layers:
   - Default
   - TransparentFX

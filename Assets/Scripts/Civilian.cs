@@ -15,7 +15,7 @@ public class Civilian : Injury
     public float bloodLossRate;
     public bool isInjured;
 
-    public GameObject bodyParts;
+    public GameObject[] bodyParts;
     public GameObject headPart;
 
     void Start()
@@ -45,9 +45,9 @@ public class Civilian : Injury
                         //roll for body part.
                         int bodyRoll = Random.Range(0, 101);
                         if(bodyRoll <=80){
-                            //int bodyPartRoll = Random.Range(0, bodyParts.Length);
-                            //WoundRoll(bodyParts[bodyPartRoll].transform); //roll for injuries and wounds
-                            WoundRoll(bodyParts.transform); //roll for injuries and wounds, instantiate on body parts
+                            int bodyPartRoll = Random.Range(0, bodyParts.Length);
+                            WoundRoll(bodyParts[bodyPartRoll].transform);
+                            //WoundRoll(bodyParts.transform); //roll for injuries and wounds, instantiate on body parts
                         }
                         else
                         {

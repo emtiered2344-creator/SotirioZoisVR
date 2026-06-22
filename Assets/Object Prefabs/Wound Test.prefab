@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: fb439e14844f9f34798e7d942e2cb372, type: 2}
+  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -74,7 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wound
-  radius: 0.25
+  woundData: {fileID: 11400000, guid: 0dd3654366bd57648b4e2e09bbcbca36, type: 2}
+  radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
   contactTimeout: 15
@@ -94,7 +95,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
