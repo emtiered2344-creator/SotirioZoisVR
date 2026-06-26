@@ -1,0 +1,495 @@
+fileFormatVersion: 2
+guid: a70356c670ae52141a12aa2bef653b71
+ModelImporter:
+  serializedVersion: 24200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cabinet
+    second: {fileID: 2100000, guid: c9c65dee71c6e4f4eb5043f8af39e835, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling
+    second: {fileID: 2100000, guid: bfdb2309c3061854e811981a59e5c3de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Column
+    second: {fileID: 2100000, guid: b2f19bbf30e2ef6499310673913916dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door
+    second: {fileID: 2100000, guid: 4f42c97082cbf714ba167f4ca2f79eb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 957d0512ce7fd934b85221603e28d854, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lights
+    second: {fileID: 2100000, guid: fed896cc4e7b9b94a92091b40292ffdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightsBulb
+    second: {fileID: 2100000, guid: 4c18323377c4cb84f95cf70b721e39d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LongTable
+    second: {fileID: 2100000, guid: 652b67dd739acdd42bb48bced9a9fc0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall
+    second: {fileID: 2100000, guid: 90cd73733f75b034ea0828493e2e7e59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallDoor
+    second: {fileID: 2100000, guid: 29004ab2942f5164d88481cc0f5fa99c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Whiteboard
+    second: {fileID: 2100000, guid: 9fa147d8295a5444094d5e5916daac1a, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabinet_Alpha
+    second: {fileID: 2800000, guid: db71a7981cd56a64986f61d3b91108e5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabinet_BaseColor
+    second: {fileID: 2800000, guid: ea66200ece47f164ba760eb35527f056, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabinet_Emission
+    second: {fileID: 2800000, guid: 3616f89576917a2468dd976733b6b666, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabinet_Metallic
+    second: {fileID: 2800000, guid: 2cc1e8ca3749e534b8d243df017c2ec8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabinet_Normal
+    second: {fileID: 2800000, guid: 35e0733ae14ea8e4d8e11421b1cc53f2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabinet_Roughness
+    second: {fileID: 2800000, guid: c94a9107ef744ea43bbe38b493972283, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_Alpha
+    second: {fileID: 2800000, guid: 707714455493ca143a478d33277ac7eb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_BaseColor
+    second: {fileID: 2800000, guid: 81ae9d4c88db576479218969d791d003, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_Emission
+    second: {fileID: 2800000, guid: 57fc259c926c6b44c90999e1b1b4b2f7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_Metallic
+    second: {fileID: 2800000, guid: 3ea1db1be2edc0f469c4f7c3cd5fe137, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_Normal
+    second: {fileID: 2800000, guid: 1e14d5b48fb11c94fa03e00bd5741427, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_Roughness
+    second: {fileID: 2800000, guid: 1b24d7aa5d5ff484ba954576aa368af1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Column_Alpha
+    second: {fileID: 2800000, guid: 4741c50a951e4a84e899399a7f5913e1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Column_BaseColor
+    second: {fileID: 2800000, guid: a2a1cf4b28d7ce344bf3d928bf271784, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Column_Emission
+    second: {fileID: 2800000, guid: cf7e2e3ee32829b4eb30ed5f09668bd1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Column_Metallic
+    second: {fileID: 2800000, guid: acf1f7686442e4f449af0e0a8a00b64e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Column_Normal
+    second: {fileID: 2800000, guid: 97a369fe00905384791562a1c10fd044, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Column_Roughness
+    second: {fileID: 2800000, guid: e489b6842f049a940b36d77c407cebd3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Door_Alpha
+    second: {fileID: 2800000, guid: 33f5863f033f59f4e95ae5be7a3baa54, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Door_BaseColor
+    second: {fileID: 2800000, guid: ab018d408cdc47c47b1d203ad89d9c27, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Door_Emission
+    second: {fileID: 2800000, guid: 5137c43b154805f4bb6fe1e98639b229, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Door_Metallic
+    second: {fileID: 2800000, guid: e4d6c35a4ee34c6459fc778e84d97343, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Door_Normal
+    second: {fileID: 2800000, guid: e5c2cdd5520a0c94cb8e62e47e5656b2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Door_Roughness
+    second: {fileID: 2800000, guid: 99fd8fdfb95ec3c4187457253cf57db0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floor_Alpha
+    second: {fileID: 2800000, guid: eceb091d6c62f7443851b8788c81e21c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floor_BaseColor
+    second: {fileID: 2800000, guid: a5d4aa135fd14414f9238750a7c19a32, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floor_Emission
+    second: {fileID: 2800000, guid: 52aaf6327e264d941943c029ae10b008, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floor_Metallic
+    second: {fileID: 2800000, guid: 793b46d3622603642b6aaa2840cebc6d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floor_Normal
+    second: {fileID: 2800000, guid: 84c968565c99b4846aea2b93aac5b31f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floor_Roughness
+    second: {fileID: 2800000, guid: 1b467ce918561ca469cf48b4b78e4bed, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LightsBulb_Alpha
+    second: {fileID: 2800000, guid: d5d9a3dc613c72d4d91d69bcd2116a40, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LightsBulb_BaseColor
+    second: {fileID: 2800000, guid: 3c65b12aff030424a9952956113481dd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LightsBulb_Emission
+    second: {fileID: 2800000, guid: b47faffc438dca44db247980390cfc24, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LightsBulb_Metallic
+    second: {fileID: 2800000, guid: 8db91e1ced76e8e4d862bc293c7590f6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LightsBulb_Normal
+    second: {fileID: 2800000, guid: 624bbf5bc710b5740ab50e0c7ebadedc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LightsBulb_Roughness
+    second: {fileID: 2800000, guid: 9456c5c43c98d1f4aafd42921225621d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lights_Alpha
+    second: {fileID: 2800000, guid: 1474f2635f75e044cbd02fcc488ae56f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lights_BaseColor
+    second: {fileID: 2800000, guid: d6382ee84d60c5d4481451f361e019ac, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lights_Emission
+    second: {fileID: 2800000, guid: 5c91e31798e35b84f8ae1bef81d6ec93, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lights_Metallic
+    second: {fileID: 2800000, guid: e15f53c20a526c4458ccc6cf456a660e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lights_Normal
+    second: {fileID: 2800000, guid: 104907d1cec81244aae12346ff16d138, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lights_Roughness
+    second: {fileID: 2800000, guid: 39b467a04de02034ebbc3262aa5a7525, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LongTable_Alpha
+    second: {fileID: 2800000, guid: 61aeec8493c95bc43842f23ac8a428ad, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LongTable_BaseColor
+    second: {fileID: 2800000, guid: 2f4a70cbba1114743853d1cf583fbf6d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LongTable_Emission
+    second: {fileID: 2800000, guid: 4d645f3afdad08e4ea87663eb62230c9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LongTable_Metallic
+    second: {fileID: 2800000, guid: 97d341eb122b9f14cb63bb5b3b28cb78, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LongTable_Normal
+    second: {fileID: 2800000, guid: ceaae0138d1762f46b73e1d32972d837, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LongTable_Roughness
+    second: {fileID: 2800000, guid: 050a00e5deb5bad4ca5a2fb633717686, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WallDoor_Alpha
+    second: {fileID: 2800000, guid: 42c18c91ac39a2d4b87341fda5819c33, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WallDoor_BaseColor
+    second: {fileID: 2800000, guid: d7e2118c9b4da3c43b013e34d01fcff4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WallDoor_Emission
+    second: {fileID: 2800000, guid: 634b52189dd286a4eaffe831a9aa51f5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WallDoor_Metallic
+    second: {fileID: 2800000, guid: 9b139d3dbb38561408821b92c84c656d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WallDoor_Normal
+    second: {fileID: 2800000, guid: 8a6af4c41e2426e42bc50e0503054586, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WallDoor_Roughness
+    second: {fileID: 2800000, guid: 341ef25937cae4e47998a87e936ef56b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall_Alpha
+    second: {fileID: 2800000, guid: 8955a9393ea5ccd468073f8b9d817512, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall_BaseColor
+    second: {fileID: 2800000, guid: 6676d0bdd1c085642ad9332c3871750f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall_Emission
+    second: {fileID: 2800000, guid: 2f463606f4dbdec4d94c6d0e4d680a99, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall_Metallic
+    second: {fileID: 2800000, guid: 8f6d40dfd10648843aadbb2f9bc2d281, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall_Normal
+    second: {fileID: 2800000, guid: ad6e1c26d7dea55479b2a2033cd0fdd4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall_Roughness
+    second: {fileID: 2800000, guid: e7449ecc761b8944bb6174da6b9c1449, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Whiteboard_Alpha
+    second: {fileID: 2800000, guid: 9b22c34ae3af29e4ba25b07f36d1fa50, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Whiteboard_BaseColor
+    second: {fileID: 2800000, guid: cfe55c6672fe4ae419e0118cbd4d0083, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Whiteboard_Emission
+    second: {fileID: 2800000, guid: 9e8a1517a827cd3458d60388e936358d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Whiteboard_Metallic
+    second: {fileID: 2800000, guid: 92cce996f98506947be93b696043603e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Whiteboard_Normal
+    second: {fileID: 2800000, guid: ea119329abd7522419d574f397e1fa17, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Whiteboard_Roughness
+    second: {fileID: 2800000, guid: ed4d9bca44c04144eabbc7fe4e9f383e, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
