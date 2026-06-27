@@ -31,6 +31,8 @@ public class Wound : MonoBehaviour
     public bool[] pointsTouched;
     private float lastContactTime = 0f;
     private bool pointsGenerated = false;
+    private Collider woundCollider;
+    float bleedtimer;
 
     public WoundStage Stage => currentStage;
     public bool IsHealed => currentStage == WoundStage.Healed;
@@ -39,6 +41,7 @@ public class Wound : MonoBehaviour
 
     void Start()
     {
+        woundCollider = GetComponent<Collider>();
         SetPointsVisibility(false);
         currentStage = WoundStage.Bleeding;
         
@@ -62,10 +65,12 @@ public class Wound : MonoBehaviour
         switch (currentStage)
         {
             case WoundStage.Bleeding:
-                currentStage = WoundStage.NeedBandage;
+                //gameobject particles turn on
+                //currentStage = WoundStage.NeedBandage;
                 break;
             
             case WoundStage.NeedBandage:
+            //gameobject particles turn off
                 if (!pointsGenerated)
                 {
                     GenerateBandagingPoints();
@@ -92,10 +97,17 @@ public class Wound : MonoBehaviour
         bandagingPoints = new GameObject[pointCount];
         pointsTouched = new bool[pointCount];
 
-        MeshCollider parentMesh = transform.parent?.GetComponent<MeshCollider>();
+        Transform parent = transform.parent;
+        if (parent == null)
+        {
+            Debug.LogWarning("Wound needs a parent body part!");
+            return;
+        }
+
+        Mesh parentMesh = GetParentMesh(parent);
         if (parentMesh == null)
         {
-            Debug.LogWarning("Parent object needs a MeshCollider!");
+            Debug.LogWarning("Parent object needs a MeshFilter or MeshCollider with a mesh!");
             return;
         }
 
@@ -103,80 +115,65 @@ public class Wound : MonoBehaviour
         float effectiveRadius = radius;
         float prefabScale = 0.1f;
 
-        if (transform.parent != null)
+        if (parent.CompareTag("Head"))
         {
-            if (transform.parent.CompareTag("Head"))
-            {
-                // Head uses default radius
-                effectiveRadius = radius * 2f;
-                prefabScale = 0.1f;
-            }
-            else if (transform.parent.CompareTag("Torso") || transform.parent.CompareTag("Legs"))
-            {
-                // Torso and Legs have larger wounds
-                effectiveRadius = radius * 5f;
-                prefabScale = 0.2f;
-            }
-            else if (transform.parent.CompareTag("Arms"))
-            {
-                // Arms have medium wounds
-                effectiveRadius = radius * 2f;
-                prefabScale = 0.15f;
-            }
+            effectiveRadius = radius * 4f;
+            prefabScale = 0.25f;
+        }
+        else if (parent.CompareTag("Torso"))
+        {
+            effectiveRadius = radius * 6f;
+            prefabScale = 0.3f;
+        }
+        else if (parent.CompareTag("Legs"))
+        {
+            effectiveRadius = radius * 3.5f;
+            prefabScale = 0.25f;
+        }
+        else if (parent.CompareTag("Arms"))
+        {
+            effectiveRadius = radius * 2f;
+            prefabScale = 0.15f;
         }
 
-        // Get surface normal via raycast for robust positioning
-        Vector3 normal = Vector3.up;
-        Ray ray = new Ray(transform.position + transform.up * 0.01f, transform.up);
+        Vector3 normal = CalculateSurfaceNormal(parent, parentMesh);
 
-        RaycastHit hit;
-        if (parentMesh.Raycast(ray, out hit, 1f))
-            normal = hit.normal;
-        else
-            Debug.LogWarning("Could not determine surface normal, using transform.up");
-
-        // Check if normal is near horizontal (vertical component is small)
-        if (Mathf.Abs(normal.y) < 0.3f && transform.parent != null)
+        if (Mathf.Abs(normal.y) < 0.3f)
         {
-            // Find the most vertical axis from parent transform
-            float upDot = Mathf.Abs(Vector3.Dot(transform.parent.up, Vector3.up));
-            float rightDot = Mathf.Abs(Vector3.Dot(transform.parent.right, Vector3.up));
-            float forwardDot = Mathf.Abs(Vector3.Dot(transform.parent.forward, Vector3.up));
+            float upDot = Mathf.Abs(Vector3.Dot(parent.up, Vector3.up));
+            float rightDot = Mathf.Abs(Vector3.Dot(parent.right, Vector3.up));
+            float forwardDot = Mathf.Abs(Vector3.Dot(parent.forward, Vector3.up));
 
             if (upDot >= rightDot && upDot >= forwardDot)
             {
-                // Use parent's up as the circle orientation
-                normal = transform.parent.up;
+                normal = parent.up;
             }
             else if (rightDot >= forwardDot)
             {
-                // Use parent's right as the circle orientation
-                normal = transform.parent.right;
+                normal = parent.right;
             }
             else
             {
-                // Use parent's forward as the circle orientation
-                normal = transform.parent.forward;
+                normal = parent.forward;
             }
         }
 
-        // Build orthonormal basis for the circle
         Vector3 arbitrary = Vector3.right;
         if (Mathf.Abs(Vector3.Dot(normal, arbitrary)) > 0.99f)
             arbitrary = Vector3.forward;
 
-        Vector3 right = Vector3.Cross(normal, arbitrary).normalized;
+        Vector3 tangent = Vector3.Cross(normal, arbitrary).normalized;
+        Vector3 bitangent = Vector3.Cross(normal, tangent).normalized;
 
-        // Generate points around the circle (perpendicular to surface plane)
         for (int i = 0; i < pointCount; i++)
         {
             float angle = (360f / pointCount) * i * Mathf.Deg2Rad;
-            // Calculate position in world space using right and normal basis vectors
-            Vector3 localPos = (Mathf.Cos(angle) * right + Mathf.Sin(angle) * normal) * effectiveRadius;
+            Vector3 localTangent = transform.InverseTransformDirection(tangent);
+            Vector3 localBitangent = transform.InverseTransformDirection(bitangent);
+            Vector3 localPos = (Mathf.Cos(angle) * localTangent + Mathf.Sin(angle) * localBitangent) * effectiveRadius;
             Vector3 pointPosition = transform.TransformPoint(localPos);
 
-            // Project onto mesh surface to handle curvature
-            pointPosition = GetClosestPointOnMesh(pointPosition, parentMesh);
+            pointPosition = GetClosestPointOnMesh(pointPosition, parentMesh, parent);
 
             GameObject point = Instantiate(pointPrefab, pointPosition, Quaternion.identity, transform);
             point.name = $"BandagePoint_{i}";
@@ -192,9 +189,49 @@ public class Wound : MonoBehaviour
         }
     }
 
-    Vector3 GetClosestPointOnMesh(Vector3 position, MeshCollider meshCollider)
+    Mesh GetParentMesh(Transform parent)
     {
-        return meshCollider.ClosestPoint(position);
+        if (parent == null) return null;
+
+        MeshFilter meshFilter = parent.GetComponent<MeshFilter>();
+        if (meshFilter != null && meshFilter.sharedMesh != null)
+            return meshFilter.sharedMesh;
+
+        MeshCollider meshCollider = parent.GetComponent<MeshCollider>();
+        return meshCollider != null ? meshCollider.sharedMesh : null;
+    }
+
+    Vector3 CalculateSurfaceNormal(Transform parent, Mesh parentMesh)
+    {
+        if (parent == null) return transform.up;
+
+        if (parentMesh != null && parentMesh.triangles.Length > 0)
+        {
+            int[] triangles = parentMesh.triangles;
+            int triangleIndex = Random.Range(0, triangles.Length / 3) * 3;
+
+            Vector3 v0 = parentMesh.vertices[triangles[triangleIndex]];
+            Vector3 v1 = parentMesh.vertices[triangles[triangleIndex + 1]];
+            Vector3 v2 = parentMesh.vertices[triangles[triangleIndex + 2]];
+
+            Vector3 edge1 = v1 - v0;
+            Vector3 edge2 = v2 - v0;
+            Vector3 localNormal = Vector3.Cross(edge1, edge2).normalized;
+            return parent.TransformDirection(localNormal).normalized;
+        }
+
+        return parent.up;
+    }
+
+    Vector3 GetClosestPointOnMesh(Vector3 position, Mesh parentMesh, Transform parent)
+    {
+        if (parent == null) return position;
+
+        MeshCollider meshCollider = parent.GetComponent<MeshCollider>();
+        if (meshCollider != null)
+            return meshCollider.ClosestPoint(position);
+
+        return position;
     }
 
     public void SetPointsVisibility(bool visible)
@@ -243,7 +280,7 @@ public class Wound : MonoBehaviour
 
     void OnFailed()
     {
-        //currentStage = WoundStage.Bleeding;
+        currentStage = WoundStage.Bleeding;
         pointsCompleted = 0;
         currentLoop = 1;
         System.Array.Clear(pointsTouched, 0, pointsTouched.Length);
@@ -298,6 +335,28 @@ public class Wound : MonoBehaviour
             {
                 if (point != null)
                     Gizmos.DrawSphere(point.transform.position, 0.02f * gizmoScale);
+            }
+        }
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Cloth") && currentStage == WoundStage.Bleeding)
+        {
+            if (other.bounds.Contains(woundCollider.bounds.max) && other.bounds.Contains(woundCollider.bounds.min))
+            {
+                bleedtimer += Time.deltaTime;
+                if (bleedtimer >= 3f)
+                {
+                    currentStage = WoundStage.NeedBandage;
+                    bleedtimer = 0;
+                    Debug.Log("Wound stage changed to NeedBandage due to cloth contact.");
+                }
+                
+            }
+            else
+            {
+                bleedtimer = 0;
+                Debug.Log("Cloth is not fully covering the wound.");
             }
         }
     }
