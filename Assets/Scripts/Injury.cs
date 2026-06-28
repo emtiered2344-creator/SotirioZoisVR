@@ -15,7 +15,7 @@ public class Injury : MonoBehaviour
     public WoundData[] severeWounds;//data array of possible wounds to be applied to the civilian
     public WoundData[] criticalWounds;//data array of possible wounds to be applied to the civilian
 
-    public List<WoundData> currentWounds = new List<WoundData>();//current wounds list, empty when no more injuries
+    public List<GameObject> currentWounds = new List<GameObject>();//current wounds list, empty when no more injuries
     
     [Header("Wound Placement Settings")]
     public float woundSurfaceOffset = 0.01f; //offset to place wound on the surface of the body part
@@ -27,19 +27,19 @@ public class Injury : MonoBehaviour
         {
             Debug.Log("Minor Injury");
             injuryType = InjuryType.Minor;
-            numOfInjuries = 2;
+            numOfInjuries = 15;
         }
         else if (roll > 65 && roll <= 75)
         {
             Debug.Log("Severe Injury");
             injuryType = InjuryType.Severe;
-            numOfInjuries = 3;
+            numOfInjuries = 15;
         }
         else
         {
             Debug.Log("Critical Injury");
             injuryType = InjuryType.Critical;
-            numOfInjuries = 4;
+            numOfInjuries = 15;
         }
     }
 
@@ -56,62 +56,30 @@ public class Injury : MonoBehaviour
         if (woundsArray != null)
         {
             int woundRoll = Random.Range(0, woundsArray.Length);
-            currentWounds.Add(woundsArray[woundRoll]);
 
             Vector3 woundPosition = GetSurfacePosition(bodyPart);
             Quaternion woundRotation = GetWoundRotation(bodyPart);
 
-            Instantiate(woundsArray[woundRoll].woundPrefab, woundPosition, woundRotation, bodyPart);
+            GameObject wound = Instantiate(woundsArray[woundRoll].woundPrefab, woundPosition, woundRotation, bodyPart);
+            currentWounds.Add(wound);
+            wound.GetComponent<Wound>().GenerateBandagingPoints();
         }
     }
 
     /// <summary>
-    /// Calculates the position for a wound on a random point on the mesh surface of a body part.
+    /// Calculates the position for a wound on a random point on the surface of a primitive collider.
     /// </summary>
     private Vector3 GetSurfacePosition(Transform bodyPart)
     {
-        Mesh mesh = bodyPart.GetComponent<MeshFilter>()?.sharedMesh;
+        if (TryGetSurfacePoint(bodyPart, out Vector3 point, out Vector3 normal))
+            return point + normal * woundSurfaceOffset;
 
-        // Fallback to MeshCollider if MeshFilter doesn't have a mesh
-        if (mesh == null)
-            mesh = bodyPart.GetComponent<MeshCollider>()?.sharedMesh;
-
-        if (mesh != null && mesh.triangles.Length > 0)
-        {
-            int[] triangles = mesh.triangles;
-            int randomTriangleIndex = Random.Range(0, triangles.Length / 3) * 3;
-
-            Vector3 v0 = mesh.vertices[triangles[randomTriangleIndex]];
-            Vector3 v1 = mesh.vertices[triangles[randomTriangleIndex + 1]];
-            Vector3 v2 = mesh.vertices[triangles[randomTriangleIndex + 2]];
-
-            // Use barycentric coordinates for random point on triangle
-            float r1 = Random.value;
-            float r2 = Random.value;
-            if (r1 + r2 > 1)
-            {
-                r1 = 1 - r1;
-                r2 = 1 - r2;
-            }
-
-            Vector3 localPoint = v0 + r1 * (v1 - v0) + r2 * (v2 - v0);
-            Vector3 worldPoint = bodyPart.TransformPoint(localPoint);
-
-            Vector3 edge1 = v1 - v0;
-            Vector3 edge2 = v2 - v0;
-            Vector3 localNormal = Vector3.Cross(edge1, edge2).normalized;
-            Vector3 worldNormal = bodyPart.TransformDirection(localNormal);
-
-            return worldPoint + worldNormal * woundSurfaceOffset;
-        }
-
-        // Fallback: random sphere direction
         return bodyPart.position + Random.onUnitSphere * woundSurfaceOffset;
     }
 
     /// <summary>
     /// Calculates the rotation for a wound to face the surface of the body part.
-    /// Both the up (Y) and forward (Z) directions point outward along the mesh surface normal.
+    /// Both the up (Y) and forward (Z) directions point outward along the collider surface normal.
     /// </summary>
     private Quaternion GetWoundRotation(Transform bodyPart)
     {
@@ -125,29 +93,128 @@ public class Injury : MonoBehaviour
 
     private Vector3 CalculateSurfaceNormal(Transform bodyPart)
     {
-        Mesh mesh = bodyPart.GetComponent<MeshFilter>()?.sharedMesh;
+        if (TryGetSurfacePoint(bodyPart, out _, out Vector3 normal))
+            return normal;
 
-        // Fallback to MeshCollider if MeshFilter doesn't have a mesh
-        if (mesh == null)
-            mesh = bodyPart.GetComponent<MeshCollider>()?.sharedMesh;
+        return bodyPart.up;
+    }
 
-        if (mesh != null && mesh.triangles.Length > 0)
+    private bool TryGetSurfacePoint(Transform bodyPart, out Vector3 point, out Vector3 normal)
+    {
+        point = bodyPart.position;
+        normal = bodyPart.up;
+
+        Collider collider = bodyPart.GetComponent<Collider>();
+        if (collider == null)
+            return false;
+
+        switch (collider)
         {
-            int[] triangles = mesh.triangles;
-            int randomTriangleIndex = Random.Range(0, triangles.Length / 3) * 3;
+            case BoxCollider boxCollider:
+                return GetBoxSurfacePoint(boxCollider, bodyPart, out point, out normal);
+            case SphereCollider sphereCollider:
+                return GetSphereSurfacePoint(sphereCollider, bodyPart, out point, out normal);
+            case CapsuleCollider capsuleCollider:
+                return GetCapsuleSurfacePoint(capsuleCollider, bodyPart, out point, out normal);
+            default:
+                return GetGenericColliderSurfacePoint(collider, bodyPart, out point, out normal);
+        }
+    }
 
-            Vector3 v0 = mesh.vertices[triangles[randomTriangleIndex]];
-            Vector3 v1 = mesh.vertices[triangles[randomTriangleIndex + 1]];
-            Vector3 v2 = mesh.vertices[triangles[randomTriangleIndex + 2]];
+    private bool GetBoxSurfacePoint(BoxCollider boxCollider, Transform bodyPart, out Vector3 point, out Vector3 normal)
+    {
+        Vector3 center = boxCollider.center;
+        Vector3 halfExtents = boxCollider.size * 0.5f;
 
-            Vector3 edge1 = v1 - v0;
-            Vector3 edge2 = v2 - v0;
-            Vector3 localNormal = Vector3.Cross(edge1, edge2).normalized;
+        int face = Random.Range(0, 6);
+        Vector3 localPoint = center;
+        Vector3 localNormal = Vector3.up;
 
-            return bodyPart.TransformDirection(localNormal);
+        switch (face)
+        {
+            case 0:
+                localPoint = new Vector3(center.x + halfExtents.x, center.y + Random.Range(-halfExtents.y, halfExtents.y), center.z + Random.Range(-halfExtents.z, halfExtents.z));
+                localNormal = Vector3.right;
+                break;
+            case 1:
+                localPoint = new Vector3(center.x - halfExtents.x, center.y + Random.Range(-halfExtents.y, halfExtents.y), center.z + Random.Range(-halfExtents.z, halfExtents.z));
+                localNormal = Vector3.left;
+                break;
+            case 2:
+                localPoint = new Vector3(center.x + Random.Range(-halfExtents.x, halfExtents.x), center.y + halfExtents.y, center.z + Random.Range(-halfExtents.z, halfExtents.z));
+                localNormal = Vector3.up;
+                break;
+            case 3:
+                localPoint = new Vector3(center.x + Random.Range(-halfExtents.x, halfExtents.x), center.y - halfExtents.y, center.z + Random.Range(-halfExtents.z, halfExtents.z));
+                localNormal = Vector3.down;
+                break;
+            case 4:
+                localPoint = new Vector3(center.x + Random.Range(-halfExtents.x, halfExtents.x), center.y + Random.Range(-halfExtents.y, halfExtents.y), center.z + halfExtents.z);
+                localNormal = Vector3.forward;
+                break;
+            default:
+                localPoint = new Vector3(center.x + Random.Range(-halfExtents.x, halfExtents.x), center.y + Random.Range(-halfExtents.y, halfExtents.y), center.z - halfExtents.z);
+                localNormal = Vector3.back;
+                break;
         }
 
-        // Fallback: use the body's up direction
-        return bodyPart.up;
+        point = bodyPart.TransformPoint(localPoint);
+        normal = bodyPart.TransformDirection(localNormal).normalized;
+        return true;
+    }
+
+    private bool GetSphereSurfacePoint(SphereCollider sphereCollider, Transform bodyPart, out Vector3 point, out Vector3 normal)
+    {
+        Vector3 localNormal = Random.onUnitSphere.normalized;
+        Vector3 localPoint = sphereCollider.center + localNormal * sphereCollider.radius;
+
+        point = bodyPart.TransformPoint(localPoint);
+        normal = bodyPart.TransformDirection(localNormal).normalized;
+        return true;
+    }
+
+    private bool GetCapsuleSurfacePoint(CapsuleCollider capsuleCollider, Transform bodyPart, out Vector3 point, out Vector3 normal)
+    {
+        Vector3 center = capsuleCollider.center;
+        float radius = capsuleCollider.radius;
+        float height = Mathf.Max(capsuleCollider.height, radius * 2f);
+        float halfHeight = height * 0.5f;
+        float cylinderHalfHeight = halfHeight - radius;
+
+        Vector3 axis = capsuleCollider.direction switch
+        {
+            0 => Vector3.right,
+            2 => Vector3.forward,
+            _ => Vector3.up
+        };
+
+        Vector3 tangentA = Vector3.Cross(axis, Vector3.forward).normalized;
+        if (tangentA == Vector3.zero)
+            tangentA = Vector3.Cross(axis, Vector3.right).normalized;
+        Vector3 tangentB = Vector3.Cross(axis, tangentA).normalized;
+
+        Vector3 localPoint;
+        Vector3 localNormal;
+
+        float axialOffset = Random.Range(-cylinderHalfHeight, cylinderHalfHeight);
+        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+        Vector3 radial = Mathf.Cos(angle) * tangentA + Mathf.Sin(angle) * tangentB;
+        localPoint = center + axis * axialOffset + radial * radius;
+        localNormal = radial.normalized;
+
+        point = bodyPart.TransformPoint(localPoint);
+        normal = bodyPart.TransformDirection(localNormal).normalized;
+        return true;
+    }
+
+    private bool GetGenericColliderSurfacePoint(Collider collider, Transform bodyPart, out Vector3 point, out Vector3 normal)
+    {
+        Bounds bounds = collider.bounds;
+        Vector3 samplePoint = bounds.center + Random.onUnitSphere.normalized * Mathf.Max(bounds.extents.magnitude, 0.001f);
+        point = collider.ClosestPoint(samplePoint);
+
+        Vector3 direction = (point - bounds.center).normalized;
+        normal = direction == Vector3.zero ? bodyPart.up : direction;
+        return true;
     }
 }

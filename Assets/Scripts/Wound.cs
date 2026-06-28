@@ -41,6 +41,10 @@ public class Wound : MonoBehaviour
 
     void Start()
     {
+        //GenerateBandagingPoints();
+        SetPointsVisibility(true);
+        pointsGenerated = true;
+        
         woundCollider = GetComponent<Collider>();
         SetPointsVisibility(false);
         currentStage = WoundStage.Bleeding;
@@ -66,19 +70,13 @@ public class Wound : MonoBehaviour
         {
             case WoundStage.Bleeding:
                 //gameobject particles turn on
-                //currentStage = WoundStage.NeedBandage;
+                currentStage = WoundStage.NeedBandage;
                 break;
             
             case WoundStage.NeedBandage:
             //gameobject particles turn off
-                if (!pointsGenerated)
-                {
-                    GenerateBandagingPoints();
-                    SetPointsVisibility(true);
-                    pointsGenerated = true;
-                    lastContactTime = Time.time;
-                }
-                
+
+                lastContactTime = Time.time;
                 if (Time.time - lastContactTime > contactTimeout)
                 {
                     isFailed = true;
@@ -92,7 +90,7 @@ public class Wound : MonoBehaviour
         }
     }
 
-    void GenerateBandagingPoints()
+    public void GenerateBandagingPoints()
     {
         bandagingPoints = new GameObject[pointCount];
         pointsTouched = new bool[pointCount];
@@ -100,14 +98,14 @@ public class Wound : MonoBehaviour
         Transform parent = transform.parent;
         if (parent == null)
         {
-            Debug.LogWarning("Wound needs a parent body part!");
+            Debug.LogWarning("Wound needs a parent body part!" + gameObject.name);
             return;
         }
 
-        Mesh parentMesh = GetParentMesh(parent);
-        if (parentMesh == null)
+        Collider parentCollider = GetParentCollider(parent);
+        if (parentCollider == null)
         {
-            Debug.LogWarning("Parent object needs a MeshFilter or MeshCollider with a mesh!");
+            Debug.LogWarning("Parent object needs a primitive collider for wound placement!");
             return;
         }
 
@@ -117,7 +115,7 @@ public class Wound : MonoBehaviour
 
         if (parent.CompareTag("Head"))
         {
-            effectiveRadius = radius * 4f;
+            effectiveRadius = radius * 5.5f;
             prefabScale = 0.25f;
         }
         else if (parent.CompareTag("Torso"))
@@ -136,7 +134,7 @@ public class Wound : MonoBehaviour
             prefabScale = 0.15f;
         }
 
-        Vector3 normal = CalculateSurfaceNormal(parent, parentMesh);
+        Vector3 normal = CalculateSurfaceNormal(parent, parentCollider);
 
         if (Mathf.Abs(normal.y) < 0.3f)
         {
@@ -173,7 +171,7 @@ public class Wound : MonoBehaviour
             Vector3 localPos = (Mathf.Cos(angle) * localTangent + Mathf.Sin(angle) * localBitangent) * effectiveRadius;
             Vector3 pointPosition = transform.TransformPoint(localPos);
 
-            pointPosition = GetClosestPointOnMesh(pointPosition, parentMesh, parent);
+            pointPosition = GetClosestPointOnCollider(pointPosition, parentCollider, parent);
 
             GameObject point = Instantiate(pointPrefab, pointPosition, Quaternion.identity, transform);
             point.name = $"BandagePoint_{i}";
@@ -189,49 +187,81 @@ public class Wound : MonoBehaviour
         }
     }
 
-    Mesh GetParentMesh(Transform parent)
+    Collider GetParentCollider(Transform parent)
     {
         if (parent == null) return null;
-
-        MeshFilter meshFilter = parent.GetComponent<MeshFilter>();
-        if (meshFilter != null && meshFilter.sharedMesh != null)
-            return meshFilter.sharedMesh;
-
-        MeshCollider meshCollider = parent.GetComponent<MeshCollider>();
-        return meshCollider != null ? meshCollider.sharedMesh : null;
+        return parent.GetComponent<Collider>();
     }
 
-    Vector3 CalculateSurfaceNormal(Transform parent, Mesh parentMesh)
+    Vector3 CalculateSurfaceNormal(Transform parent, Collider parentCollider)
     {
         if (parent == null) return transform.up;
 
-        if (parentMesh != null && parentMesh.triangles.Length > 0)
+        if (parentCollider != null)
         {
-            int[] triangles = parentMesh.triangles;
-            int triangleIndex = Random.Range(0, triangles.Length / 3) * 3;
+            switch (parentCollider)
+            {
+                case BoxCollider boxCollider:
+                    Vector3 localPoint = boxCollider.transform.InverseTransformPoint(transform.position);
+                    Vector3 center = boxCollider.center;
+                    Vector3 halfExtents = boxCollider.size * 0.5f;
+                    Vector3 delta = localPoint - center;
 
-            Vector3 v0 = parentMesh.vertices[triangles[triangleIndex]];
-            Vector3 v1 = parentMesh.vertices[triangles[triangleIndex + 1]];
-            Vector3 v2 = parentMesh.vertices[triangles[triangleIndex + 2]];
+                    float xDist = Mathf.Abs(delta.x) - halfExtents.x;
+                    float yDist = Mathf.Abs(delta.y) - halfExtents.y;
+                    float zDist = Mathf.Abs(delta.z) - halfExtents.z;
 
-            Vector3 edge1 = v1 - v0;
-            Vector3 edge2 = v2 - v0;
-            Vector3 localNormal = Vector3.Cross(edge1, edge2).normalized;
-            return parent.TransformDirection(localNormal).normalized;
+                    Vector3 localNormal = Vector3.up;
+                    if (Mathf.Abs(xDist) >= Mathf.Abs(yDist) && Mathf.Abs(xDist) >= Mathf.Abs(zDist))
+                        localNormal = delta.x >= 0f ? Vector3.right : Vector3.left;
+                    else if (Mathf.Abs(yDist) >= Mathf.Abs(zDist))
+                        localNormal = delta.y >= 0f ? Vector3.up : Vector3.down;
+                    else
+                        localNormal = delta.z >= 0f ? Vector3.forward : Vector3.back;
+
+                    return parent.TransformDirection(localNormal).normalized;
+
+                case SphereCollider sphereCollider:
+                    Vector3 sphereLocalPoint = sphereCollider.transform.InverseTransformPoint(transform.position);
+                    Vector3 sphereLocalNormal = (sphereLocalPoint - sphereCollider.center).normalized;
+                    return sphereCollider.transform.TransformDirection(sphereLocalNormal).normalized;
+
+                case CapsuleCollider capsuleCollider:
+                    Vector3 capsuleLocalPoint = capsuleCollider.transform.InverseTransformPoint(transform.position);
+                    Vector3 capsuleCenter = capsuleCollider.center;
+                    Vector3 axis = capsuleCollider.direction switch
+                    {
+                        0 => Vector3.right,
+                        2 => Vector3.forward,
+                        _ => Vector3.up
+                    };
+
+                    float radius = capsuleCollider.radius;
+                    float height = Mathf.Max(capsuleCollider.height, radius * 2f);
+                    float halfHeight = height * 0.5f;
+                    float cylinderHalfHeight = halfHeight - radius;
+                    Vector3 toPoint = capsuleLocalPoint - capsuleCenter;
+                    float axisProjection = Vector3.Dot(toPoint, axis);
+                    Vector3 radial = toPoint - axis * axisProjection;
+
+                    if (Mathf.Abs(axisProjection) >= cylinderHalfHeight)
+                    {
+                        float sign = axisProjection >= 0f ? 1f : -1f;
+                        Vector3 capCenter = capsuleCenter + axis * sign * cylinderHalfHeight;
+                        return capsuleCollider.transform.TransformDirection((capsuleLocalPoint - capCenter).normalized).normalized;
+                    }
+
+                    return capsuleCollider.transform.TransformDirection(radial.normalized).normalized;
+            }
         }
 
         return parent.up;
     }
 
-    Vector3 GetClosestPointOnMesh(Vector3 position, Mesh parentMesh, Transform parent)
+    Vector3 GetClosestPointOnCollider(Vector3 position, Collider parentCollider, Transform parent)
     {
-        if (parent == null) return position;
-
-        MeshCollider meshCollider = parent.GetComponent<MeshCollider>();
-        if (meshCollider != null)
-            return meshCollider.ClosestPoint(position);
-
-        return position;
+        if (parent == null || parentCollider == null) return position;
+        return parentCollider.ClosestPoint(position);
     }
 
     public void SetPointsVisibility(bool visible)
@@ -275,7 +305,18 @@ public class Wound : MonoBehaviour
         currentStage = WoundStage.Healed;
         if (WoundManager.Instance != null)
             WoundManager.Instance.WoundHealed(this);
+        Injury injury = transform.root.GetComponent<Injury>();
+        if (injury != null)
+        {
+            injury.currentWounds.Remove(gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("Injury component not found on root object.");
+        }
+        
         Destroy(gameObject); // TODO: change to decal bandaged
+        
     }
 
     void OnFailed()

@@ -18,10 +18,34 @@ public class Civilian : Injury
     public GameObject[] bodyParts;
     public GameObject headPart;
 
+    void Awake()
+    {
+        RollInjury();
+        for(int i = 0; i < numOfInjuries; i++)
+        {
+            //roll for body part.
+            int bodyRoll = Random.Range(0, 101);
+            if(bodyRoll <=80){
+            int bodyPartRoll = Random.Range(0, bodyParts.Length);
+            WoundRoll(bodyParts[bodyPartRoll].transform);
+            //WoundRoll(bodyParts.transform); //roll for injuries and wounds, instantiate on body parts
+            }
+            else
+            {
+                WoundRoll(headPart.transform); //roll for injuries and wounds, instantiate on head part
+            }
+        }
+    }
+
     void Start()
     {
         currentState = CivilianState.Calm;
         isInjured = false;
+        
+        foreach (GameObject wound in currentWounds)
+        {
+            wound.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -38,21 +62,10 @@ public class Civilian : Injury
             case CivilianState.Injured:
                 if (!isInjured)
                 {
-                    RollInjury();
                     isInjured = true;
-                    for(int i = 0; i < numOfInjuries; i++)
+                    foreach (GameObject wound in currentWounds)
                     {
-                        //roll for body part.
-                        int bodyRoll = Random.Range(0, 101);
-                        if(bodyRoll <=80){
-                            int bodyPartRoll = Random.Range(0, bodyParts.Length);
-                            WoundRoll(bodyParts[bodyPartRoll].transform);
-                            //WoundRoll(bodyParts.transform); //roll for injuries and wounds, instantiate on body parts
-                        }
-                        else
-                        {
-                            WoundRoll(headPart.transform); //roll for injuries and wounds, instantiate on head part
-                        }
+                        wound.SetActive(true);
                     }
                 }
 
