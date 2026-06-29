@@ -9,8 +9,6 @@ public class Wound : MonoBehaviour
         Healed
     }
 
-    public WoundData woundData; // Reference to the wound data for this specific wound instance
-
     [Header("Wound Properties")]
     public float radius = 0.05f;
     
@@ -25,7 +23,16 @@ public class Wound : MonoBehaviour
     public WoundStage currentStage = WoundStage.Bleeding;
     private int pointsCompleted = 0;
     private int currentLoop = 1;
-    private int woundSeverity = 1; // Number of loops required (set from woundData)
+    public int woundSeverityInt = 1; // Number of loops required (set from woundData)
+
+    public enum WoundSeverity
+    {
+        Minor = 1,
+        Severe = 2,
+        Critical = 3
+    }
+    public WoundSeverity severityLevel = WoundSeverity.Minor;
+
     private bool isFailed = false;
     private GameObject[] bandagingPoints;
     public bool[] pointsTouched;
@@ -42,13 +49,22 @@ public class Wound : MonoBehaviour
     void Start()
     {
         GenerateBandagingPoints();
-        SetPointsVisibility(true);
+        SetPointsVisibility(false);
+        
         pointsGenerated = true;
         
         woundCollider = GetComponent<Collider>();
-        //SetPointsVisibility(false);
         currentStage = WoundStage.Bleeding;
 
+        woundSeverityInt = severityLevel switch
+        {
+            WoundSeverity.Minor => 1,
+            WoundSeverity.Severe => 2,
+            WoundSeverity.Critical => 3,
+            _ => 1
+        };
+
+        //gameObject.SetActive(false); // Deactivate the wound until it is needed
     }
 
     void Update()
@@ -100,27 +116,27 @@ public class Wound : MonoBehaviour
 
         // Increase radius based on body part tag
         float effectiveRadius = radius;
-        float prefabScale = 0.1f;
+        float prefabScale = 0.05f;
 
         if (parent.CompareTag("Head"))
         {
             effectiveRadius = radius * 5.5f;
-            prefabScale = 0.25f;
+            //prefabScale = 0.1f;
         }
         else if (parent.CompareTag("Torso"))
         {
             effectiveRadius = radius * 6f;
-            prefabScale = 0.3f;
+            //prefabScale = 0.1f;
         }
         else if (parent.CompareTag("Legs"))
         {
             effectiveRadius = radius * 3.5f;
-            prefabScale = 0.25f;
+            //prefabScale = 0.1f;
         }
         else if (parent.CompareTag("Arms"))
         {
-            effectiveRadius = radius * 2f;
-            prefabScale = 0.15f;
+            effectiveRadius = radius * 4f;
+            //prefabScale = 0.15f;
         }
 
         for (int i = 0; i < pointCount; i++)
@@ -181,7 +197,7 @@ public class Wound : MonoBehaviour
         if (pointsCompleted >= pointCount)
         {
             // Check if we've completed all required loops
-            if (currentLoop >= woundSeverity)
+            if (currentLoop >= woundSeverityInt)
             {
                 OnHealed();
             }
@@ -241,24 +257,30 @@ public class Wound : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         float displayRadius = radius;
-        float gizmoScale = 1f;
+        float gizmoScale = radius;
         
         if (transform.parent != null)
         {
             if (transform.parent.CompareTag("Head"))
             {
-                displayRadius = radius;
-                gizmoScale = 1f;
+                displayRadius = radius*5.5f;
+                //gizmoScale = 1f;
             }
-            else if (transform.parent.CompareTag("Torso") || transform.parent.CompareTag("Legs"))
+            else if (transform.parent.CompareTag("Torso"))
+            {
+                displayRadius = radius * 6f;
+                //gizmoScale = 2f;
+            }
+
+            else if (transform.parent.CompareTag("Legs"))
             {
                 displayRadius = radius * 3.5f;
-                gizmoScale = 2f;
+                //gizmoScale = 1.5f;
             }
             else if (transform.parent.CompareTag("Arms"))
             {
-                displayRadius = radius * 2.3f;
-                gizmoScale = 1.5f;
+                displayRadius = radius * 4f;
+                //gizmoScale = 1.5f;
             }
         }
 

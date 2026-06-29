@@ -20,21 +20,7 @@ public class Civilian : Injury
 
     void Awake()
     {
-        /*RollInjury();
-        for(int i = 0; i < numOfInjuries; i++)
-        {
-            //roll for body part.
-            int bodyRoll = Random.Range(0, 101);
-            if(bodyRoll <=80){
-            int bodyPartRoll = Random.Range(0, bodyParts.Length);
-            WoundRoll(bodyParts[bodyPartRoll].transform);
-            //WoundRoll(bodyParts.transform); //roll for injuries and wounds, instantiate on body parts
-            }
-            else
-            {
-                WoundRoll(headPart.transform); //roll for injuries and wounds, instantiate on head part
-            }
-        }*/
+        
     }
 
     void Start()

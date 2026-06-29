@@ -22,25 +22,7 @@ public class Injury : MonoBehaviour
 
     public void RollInjury()
     {
-        int roll = Random.Range(1, 101);
-        if (roll <= 65)
-        {
-            Debug.Log("Minor Injury");
-            injuryType = InjuryType.Minor;
-            numOfInjuries = 15;
-        }
-        else if (roll > 65 && roll <= 75)
-        {
-            Debug.Log("Severe Injury");
-            injuryType = InjuryType.Severe;
-            numOfInjuries = 15;
-        }
-        else
-        {
-            Debug.Log("Critical Injury");
-            injuryType = InjuryType.Critical;
-            numOfInjuries = 15;
-        }
+       
     }
 
     public void WoundRoll(Transform bodyPart)
