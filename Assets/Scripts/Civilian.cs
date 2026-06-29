@@ -20,7 +20,7 @@ public class Civilian : Injury
 
     void Awake()
     {
-        RollInjury();
+        /*RollInjury();
         for(int i = 0; i < numOfInjuries; i++)
         {
             //roll for body part.
@@ -34,7 +34,7 @@ public class Civilian : Injury
             {
                 WoundRoll(headPart.transform); //roll for injuries and wounds, instantiate on head part
             }
-        }
+        }*/
     }
 
     void Start()
@@ -42,10 +42,10 @@ public class Civilian : Injury
         currentState = CivilianState.Calm;
         isInjured = false;
         
-        foreach (GameObject wound in currentWounds)
+        /*foreach (GameObject wound in currentWounds)
         {
             wound.SetActive(false);
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -63,10 +63,10 @@ public class Civilian : Injury
                 if (!isInjured)
                 {
                     isInjured = true;
-                    foreach (GameObject wound in currentWounds)
+                    /*foreach (GameObject wound in currentWounds)
                     {
                         wound.SetActive(true);
-                    }
+                    }*/
                 }
 
                 bloodLevel -= bloodLossRate * Time.deltaTime;

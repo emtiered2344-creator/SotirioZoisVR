@@ -41,25 +41,14 @@ public class Wound : MonoBehaviour
 
     void Start()
     {
-        //GenerateBandagingPoints();
+        GenerateBandagingPoints();
         SetPointsVisibility(true);
         pointsGenerated = true;
         
         woundCollider = GetComponent<Collider>();
-        SetPointsVisibility(false);
+        //SetPointsVisibility(false);
         currentStage = WoundStage.Bleeding;
-        
-        // Set wound severity based on woundData
-        if (woundData != null)
-        {
-            woundSeverity = woundData.woundSeverity switch
-            {
-                WoundData.WoundSeverity.Minor => 1,
-                WoundData.WoundSeverity.Severe => 2,
-                WoundData.WoundSeverity.Critical => 3,
-                _ => 1
-            };
-        }
+
     }
 
     void Update()
@@ -134,41 +123,13 @@ public class Wound : MonoBehaviour
             prefabScale = 0.15f;
         }
 
-        Vector3 normal = CalculateSurfaceNormal(parent, parentCollider);
-
-        if (Mathf.Abs(normal.y) < 0.3f)
-        {
-            float upDot = Mathf.Abs(Vector3.Dot(parent.up, Vector3.up));
-            float rightDot = Mathf.Abs(Vector3.Dot(parent.right, Vector3.up));
-            float forwardDot = Mathf.Abs(Vector3.Dot(parent.forward, Vector3.up));
-
-            if (upDot >= rightDot && upDot >= forwardDot)
-            {
-                normal = parent.up;
-            }
-            else if (rightDot >= forwardDot)
-            {
-                normal = parent.right;
-            }
-            else
-            {
-                normal = parent.forward;
-            }
-        }
-
-        Vector3 arbitrary = Vector3.right;
-        if (Mathf.Abs(Vector3.Dot(normal, arbitrary)) > 0.99f)
-            arbitrary = Vector3.forward;
-
-        Vector3 tangent = Vector3.Cross(normal, arbitrary).normalized;
-        Vector3 bitangent = Vector3.Cross(normal, tangent).normalized;
-
         for (int i = 0; i < pointCount; i++)
         {
             float angle = (360f / pointCount) * i * Mathf.Deg2Rad;
-            Vector3 localTangent = transform.InverseTransformDirection(tangent);
-            Vector3 localBitangent = transform.InverseTransformDirection(bitangent);
-            Vector3 localPos = (Mathf.Cos(angle) * localTangent + Mathf.Sin(angle) * localBitangent) * effectiveRadius;
+            Vector3 localPos = new Vector3(
+                0f,
+                Mathf.Sin(angle) * effectiveRadius,
+                Mathf.Cos(angle) * effectiveRadius);
             Vector3 pointPosition = transform.TransformPoint(localPos);
 
             pointPosition = GetClosestPointOnCollider(pointPosition, parentCollider, parent);
@@ -177,6 +138,7 @@ public class Wound : MonoBehaviour
             point.name = $"BandagePoint_{i}";
             point.tag = "BandagePoint";
             point.transform.localScale = Vector3.one * prefabScale;
+            point.transform.localRotation = Quaternion.identity;
 
             Collider col = point.GetComponent<Collider>();
             if (col != null) col.isTrigger = true;
@@ -191,71 +153,6 @@ public class Wound : MonoBehaviour
     {
         if (parent == null) return null;
         return parent.GetComponent<Collider>();
-    }
-
-    Vector3 CalculateSurfaceNormal(Transform parent, Collider parentCollider)
-    {
-        if (parent == null) return transform.up;
-
-        if (parentCollider != null)
-        {
-            switch (parentCollider)
-            {
-                case BoxCollider boxCollider:
-                    Vector3 localPoint = boxCollider.transform.InverseTransformPoint(transform.position);
-                    Vector3 center = boxCollider.center;
-                    Vector3 halfExtents = boxCollider.size * 0.5f;
-                    Vector3 delta = localPoint - center;
-
-                    float xDist = Mathf.Abs(delta.x) - halfExtents.x;
-                    float yDist = Mathf.Abs(delta.y) - halfExtents.y;
-                    float zDist = Mathf.Abs(delta.z) - halfExtents.z;
-
-                    Vector3 localNormal = Vector3.up;
-                    if (Mathf.Abs(xDist) >= Mathf.Abs(yDist) && Mathf.Abs(xDist) >= Mathf.Abs(zDist))
-                        localNormal = delta.x >= 0f ? Vector3.right : Vector3.left;
-                    else if (Mathf.Abs(yDist) >= Mathf.Abs(zDist))
-                        localNormal = delta.y >= 0f ? Vector3.up : Vector3.down;
-                    else
-                        localNormal = delta.z >= 0f ? Vector3.forward : Vector3.back;
-
-                    return parent.TransformDirection(localNormal).normalized;
-
-                case SphereCollider sphereCollider:
-                    Vector3 sphereLocalPoint = sphereCollider.transform.InverseTransformPoint(transform.position);
-                    Vector3 sphereLocalNormal = (sphereLocalPoint - sphereCollider.center).normalized;
-                    return sphereCollider.transform.TransformDirection(sphereLocalNormal).normalized;
-
-                case CapsuleCollider capsuleCollider:
-                    Vector3 capsuleLocalPoint = capsuleCollider.transform.InverseTransformPoint(transform.position);
-                    Vector3 capsuleCenter = capsuleCollider.center;
-                    Vector3 axis = capsuleCollider.direction switch
-                    {
-                        0 => Vector3.right,
-                        2 => Vector3.forward,
-                        _ => Vector3.up
-                    };
-
-                    float radius = capsuleCollider.radius;
-                    float height = Mathf.Max(capsuleCollider.height, radius * 2f);
-                    float halfHeight = height * 0.5f;
-                    float cylinderHalfHeight = halfHeight - radius;
-                    Vector3 toPoint = capsuleLocalPoint - capsuleCenter;
-                    float axisProjection = Vector3.Dot(toPoint, axis);
-                    Vector3 radial = toPoint - axis * axisProjection;
-
-                    if (Mathf.Abs(axisProjection) >= cylinderHalfHeight)
-                    {
-                        float sign = axisProjection >= 0f ? 1f : -1f;
-                        Vector3 capCenter = capsuleCenter + axis * sign * cylinderHalfHeight;
-                        return capsuleCollider.transform.TransformDirection((capsuleLocalPoint - capCenter).normalized).normalized;
-                    }
-
-                    return capsuleCollider.transform.TransformDirection(radial.normalized).normalized;
-            }
-        }
-
-        return parent.up;
     }
 
     Vector3 GetClosestPointOnCollider(Vector3 position, Collider parentCollider, Transform parent)
