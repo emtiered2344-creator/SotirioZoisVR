@@ -27,11 +27,7 @@ public class Civilian : Injury
     {
         currentState = CivilianState.Calm;
         isInjured = false;
-        
-        /*foreach (GameObject wound in currentWounds)
-        {
-            wound.SetActive(false);
-        }*/
+
     }
 
     // Update is called once per frame
@@ -49,10 +45,8 @@ public class Civilian : Injury
                 if (!isInjured)
                 {
                     isInjured = true;
-                    /*foreach (GameObject wound in currentWounds)
-                    {
-                        wound.SetActive(true);
-                    }*/
+                    RollInjury();
+                    WoundRoll();
                 }
 
                 bloodLevel -= bloodLossRate * Time.deltaTime;

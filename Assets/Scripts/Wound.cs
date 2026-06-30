@@ -64,7 +64,7 @@ public class Wound : MonoBehaviour
             _ => 1
         };
 
-        //gameObject.SetActive(false); // Deactivate the wound until it is needed
+        gameObject.SetActive(false); // Deactivate the wound until it is needed
     }
 
     void Update()
@@ -116,7 +116,7 @@ public class Wound : MonoBehaviour
 
         // Increase radius based on body part tag
         float effectiveRadius = radius;
-        float prefabScale = 0.05f;
+        float prefabScale = 0.07f;
 
         if (parent.CompareTag("Head"))
         {
