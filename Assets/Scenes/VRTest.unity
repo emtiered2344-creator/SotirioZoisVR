@@ -451,12 +451,12 @@ GameObject:
   - component: {fileID: 134204155}
   - component: {fileID: 134204154}
   m_Layer: 7
-  m_Name: WoundTestF7
+  m_Name: WoundTestF7 NA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &134204153
 Transform:
   m_ObjectHideFlags: 0
@@ -641,6 +641,109 @@ MonoBehaviour:
   m_ScaleMode: 1
   m_Offset: {x: 0, y: 0, z: 0}
   m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &175236853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 175236854}
+  - component: {fileID: 175236857}
+  - component: {fileID: 175236856}
+  - component: {fileID: 175236855}
+  m_Layer: 7
+  m_Name: WoundScratchF13LA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &175236854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175236853}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7543047, y: 0.105614595, z: -0.63799065, w: -0.113305025}
+  m_LocalPosition: {x: 0.0112, y: 0.0138, z: 0.6462}
+  m_LocalScale: {x: 0.39999998, y: 0.40000018, z: 0.40000024}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1921986851970526392}
+  m_LocalEulerAnglesHint: {x: -197.8, y: -80.31, z: 0.8880005}
+--- !u!135 &175236855
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175236853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &175236856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175236853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &175236857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175236853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9, y: 0.5, z: 0.1}
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
@@ -1343,6 +1446,109 @@ MonoBehaviour:
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
+--- !u!1 &385392020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385392021}
+  - component: {fileID: 385392024}
+  - component: {fileID: 385392023}
+  - component: {fileID: 385392022}
+  m_Layer: 7
+  m_Name: WoundLacerationF18RH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &385392021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385392020}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.72249657, y: -0.11235137, z: -0.67138517, w: 0.12090449}
+  m_LocalPosition: {x: -0.0192, y: 0.0046, z: 0.5548}
+  m_LocalScale: {x: 0.39999998, y: 0.40000024, z: 0.4000002}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5798184936999414245}
+  m_LocalEulerAnglesHint: {x: -161, y: -85.8, z: 0}
+--- !u!135 &385392022
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385392020}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &385392023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385392020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &385392024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385392020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 8c73e11ef3af92f4182284e4ae02d77e, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.8, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &389171297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1652,109 @@ MonoBehaviour:
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
+--- !u!1 &393061630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393061631}
+  - component: {fileID: 393061634}
+  - component: {fileID: 393061633}
+  - component: {fileID: 393061632}
+  m_Layer: 7
+  m_Name: WoundHeadInjF2HeD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &393061631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393061630}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7877048, y: 0.11147138, z: -0.5871371, w: -0.14955032}
+  m_LocalPosition: {x: -0.1442, y: 0.0709, z: 0.2917}
+  m_LocalScale: {x: 0.39999998, y: 0.4000002, z: 0.40000024}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5803204007280856209}
+  m_LocalEulerAnglesHint: {x: -201.5, y: -73.4, z: 0}
+--- !u!135 &393061632
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393061630}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &393061633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393061630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &393061634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393061630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9c9267525d0d99c4f853b91e047caa76, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &429019200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1768,7 @@ GameObject:
   - component: {fileID: 429019203}
   - component: {fileID: 429019202}
   m_Layer: 7
-  m_Name: WoundTestF19
+  m_Name: WoundAbrasionF19TR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1473,13 +1782,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429019200}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.63119394, y: -0.3617113, z: 0.58270925, w: 0.36222792}
-  m_LocalPosition: {x: -0.0354, y: 0.0717, z: 0.5419}
+  m_LocalRotation: {x: 0.41729292, y: 0.5815198, z: 0.40740502, w: -0.5672059}
+  m_LocalPosition: {x: 0.053, y: -0.143, z: 0.528}
   m_LocalScale: {x: 0.40000004, y: 0.39999774, z: 0.39999846}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7860849869826455003}
-  m_LocalEulerAnglesHint: {x: 118.5, y: -82.96, z: 4.143}
+  m_LocalEulerAnglesHint: {x: 288.7, y: -94.4, z: 4.143}
 --- !u!135 &429019202
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1533,7 +1842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: 7f1200a5763abd8479b1bf7785e94130, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -1769,7 +2078,7 @@ GameObject:
   - component: {fileID: 483606681}
   - component: {fileID: 483606680}
   m_Layer: 7
-  m_Name: WoundTestF18
+  m_Name: WoundScratchF18RH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1843,7 +2152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -2070,6 +2379,109 @@ MonoBehaviour:
   woundLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!1 &645094687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645094688}
+  - component: {fileID: 645094691}
+  - component: {fileID: 645094690}
+  - component: {fileID: 645094689}
+  m_Layer: 7
+  m_Name: WoundSprainF11 (1)LA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645094688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645094687}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5544352, y: -0.43660498, z: 0.5695208, w: 0.42145437}
+  m_LocalPosition: {x: -0.0129, y: 0.0624, z: 0.3755}
+  m_LocalScale: {x: 0.39999998, y: 0.40000018, z: 0.40000024}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1921986851970526392}
+  m_LocalEulerAnglesHint: {x: 105.28, y: -90.86, z: 0.8880005}
+--- !u!135 &645094689
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645094687}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &645094690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645094687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &645094691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645094687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: f1b70c17d26d48845944382e2f570752, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.2}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &645655408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,7 +2495,7 @@ GameObject:
   - component: {fileID: 645655411}
   - component: {fileID: 645655410}
   m_Layer: 7
-  m_Name: WoundTestF15
+  m_Name: WoundSprainF15LR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2157,6 +2569,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: f1b70c17d26d48845944382e2f570752, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &648221143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 648221144}
+  - component: {fileID: 648221147}
+  - component: {fileID: 648221146}
+  - component: {fileID: 648221145}
+  m_Layer: 7
+  m_Name: WoundTest NA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &648221144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648221143}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.08371448, y: -0.7824419, z: -0.10780747, w: 0.6075805}
+  m_LocalPosition: {x: 0.1723, y: -0.1788, z: 0.0236}
+  m_LocalScale: {x: 0.39999992, y: 0.4000002, z: 0.40000018}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 8447976232517909582}
+  m_LocalEulerAnglesHint: {x: 344.31, y: 255.66, z: 0}
+--- !u!135 &648221145
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648221143}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &648221146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648221143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &648221147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648221143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
   m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
@@ -2186,12 +2701,12 @@ GameObject:
   - component: {fileID: 652535033}
   - component: {fileID: 652535032}
   m_Layer: 7
-  m_Name: WoundTestF8
+  m_Name: WoundTest NA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &652535031
 Transform:
   m_ObjectHideFlags: 0
@@ -2261,6 +2776,109 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
   m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &654475683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654475684}
+  - component: {fileID: 654475687}
+  - component: {fileID: 654475686}
+  - component: {fileID: 654475685}
+  m_Layer: 7
+  m_Name: WoundAbrasionF14LL (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &654475684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654475683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5297164, y: -0.4690636, z: 0.54382515, w: 0.45125842}
+  m_LocalPosition: {x: -0.0146, y: 0.0657, z: 0.1656}
+  m_LocalScale: {x: 0.39999992, y: 0.3999979, z: 0.39999825}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7178750446706099893}
+  m_LocalEulerAnglesHint: {x: 98.79, y: -89.535, z: 2.299}
+--- !u!135 &654475685
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654475683}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &654475686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654475683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &654475687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654475683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 01d889ea420199e4ca8e358978021bb2, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -2693,6 +3311,109 @@ MonoBehaviour:
   woundLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!1 &734693545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 734693546}
+  - component: {fileID: 734693549}
+  - component: {fileID: 734693548}
+  - component: {fileID: 734693547}
+  m_Layer: 7
+  m_Name: WoundHeadInjF1HeD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &734693546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734693545}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.13915993, y: -0.69327813, z: -0.13915993, w: 0.69327813}
+  m_LocalPosition: {x: 0.172, y: -0.097, z: 0.2893}
+  m_LocalScale: {x: 0.39999998, y: 0.4000002, z: 0.40000024}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5803204007280856209}
+  m_LocalEulerAnglesHint: {x: -22.7, y: -90, z: 0}
+--- !u!135 &734693547
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734693545}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &734693548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734693545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &734693549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734693545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9c9267525d0d99c4f853b91e047caa76, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &749370455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3084,7 +3805,7 @@ GameObject:
   - component: {fileID: 841339355}
   - component: {fileID: 841339354}
   m_Layer: 7
-  m_Name: WoundTestF17
+  m_Name: WoundScratchF17LR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3158,7 +3879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -3187,7 +3908,7 @@ GameObject:
   - component: {fileID: 851651597}
   - component: {fileID: 851651596}
   m_Layer: 7
-  m_Name: WoundTestF16
+  m_Name: WoundSprainF16RH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3201,13 +3922,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851651594}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.38816673, y: -0.5555126, z: 0.37287146, w: -0.63379747}
-  m_LocalPosition: {x: -0.0255, y: 0.0367, z: 0.2752}
+  m_LocalRotation: {x: 0.6144952, y: -0.33382845, z: 0.63855493, w: 0.32125035}
+  m_LocalPosition: {x: -0.0298, y: 0.0358, z: 0.2916}
   m_LocalScale: {x: 0.39999998, y: 0.40000024, z: 0.4000002}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5798184936999414245}
-  m_LocalEulerAnglesHint: {x: -245, y: -101.11401, z: -185.62}
+  m_LocalEulerAnglesHint: {x: 124.8, y: -92.2, z: 0}
 --- !u!135 &851651596
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3261,7 +3982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: f1b70c17d26d48845944382e2f570752, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -4263,12 +4984,12 @@ GameObject:
   - component: {fileID: 1180243658}
   - component: {fileID: 1180243657}
   m_Layer: 7
-  m_Name: WoundTestF5
+  m_Name: WoundTestF5 NA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1180243656
 Transform:
   m_ObjectHideFlags: 0
@@ -4572,7 +5293,7 @@ GameObject:
   - component: {fileID: 1289995996}
   - component: {fileID: 1289995995}
   m_Layer: 7
-  m_Name: WoundTestF10
+  m_Name: WoundScratchF10TL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4586,13 +5307,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289995993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18563396, y: -0.682305, z: 0.18563396, w: 0.682305}
-  m_LocalPosition: {x: 0.1247, y: 0.128, z: 0.3165}
+  m_LocalRotation: {x: 0.26259664, y: -0.65653867, z: 0.26259664, w: 0.65653867}
+  m_LocalPosition: {x: 0.129, y: 0.1235, z: 0.3165}
   m_LocalScale: {x: 0.3999999, y: 0.39999783, z: 0.39999828}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2726927482021427618}
-  m_LocalEulerAnglesHint: {x: 30.44, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 43.6, y: -90, z: 0}
 --- !u!135 &1289995995
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4646,7 +5367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -4675,7 +5396,7 @@ GameObject:
   - component: {fileID: 1302419666}
   - component: {fileID: 1302419665}
   m_Layer: 7
-  m_Name: WoundTestF12
+  m_Name: WoundScratchF12TL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4749,7 +5470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -5217,6 +5938,109 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1475273646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475273647}
+  - component: {fileID: 1475273650}
+  - component: {fileID: 1475273649}
+  - component: {fileID: 1475273648}
+  m_Layer: 7
+  m_Name: WoundHeadInjF3HeD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475273647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475273646}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5235669, y: -0.37644783, z: -0.7124892, w: 0.27662966}
+  m_LocalPosition: {x: -0.1229, y: -0.1088, z: 0.0662}
+  m_LocalScale: {x: 0.39999998, y: 0.4000002, z: 0.40000024}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5803204007280856209}
+  m_LocalEulerAnglesHint: {x: -124.3, y: -107.38, z: 0}
+--- !u!135 &1475273648
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475273646}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1475273649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475273646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &1475273650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475273646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9c9267525d0d99c4f853b91e047caa76, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &1492293435
 GameObject:
   m_ObjectHideFlags: 0
@@ -5230,7 +6054,7 @@ GameObject:
   - component: {fileID: 1492293438}
   - component: {fileID: 1492293437}
   m_Layer: 7
-  m_Name: WoundTestF14
+  m_Name: WoundSprainF14LL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5304,7 +6128,110 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: f1b70c17d26d48845944382e2f570752, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &1542259818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542259819}
+  - component: {fileID: 1542259822}
+  - component: {fileID: 1542259821}
+  - component: {fileID: 1542259820}
+  m_Layer: 7
+  m_Name: WoundHeadInjF4HeD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1542259819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542259818}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.3589309, y: -0.41213834, z: 0.18091607, w: 0.8176674}
+  m_LocalPosition: {x: 0.118, y: 0.135, z: 0.1211}
+  m_LocalScale: {x: 0.39999998, y: 0.4000002, z: 0.40000024}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5803204007280856209}
+  m_LocalEulerAnglesHint: {x: 47.4, y: -53.5, z: 0}
+--- !u!135 &1542259820
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542259818}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1542259821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542259818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &1542259822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542259818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 9c9267525d0d99c4f853b91e047caa76, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -6095,6 +7022,109 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
   m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &1768559894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1768559895}
+  - component: {fileID: 1768559898}
+  - component: {fileID: 1768559897}
+  - component: {fileID: 1768559896}
+  m_Layer: 7
+  m_Name: WoundAbrasionF16RH (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1768559895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768559894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6144952, y: -0.33382845, z: 0.63855493, w: 0.32125035}
+  m_LocalPosition: {x: -0.021, y: 0.036, z: 0.074}
+  m_LocalScale: {x: 0.39999998, y: 0.40000024, z: 0.4000002}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5798184936999414245}
+  m_LocalEulerAnglesHint: {x: 124.8, y: -92.2, z: 0}
+--- !u!135 &1768559896
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768559894}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1768559897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768559894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &1768559898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768559894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 7f1200a5763abd8479b1bf7785e94130, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -7065,6 +8095,109 @@ MonoBehaviour:
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
+--- !u!1 &2077420663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2077420664}
+  - component: {fileID: 2077420667}
+  - component: {fileID: 2077420666}
+  - component: {fileID: 2077420665}
+  m_Layer: 7
+  m_Name: WoundSprainF6LH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2077420664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077420663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6117384, y: -0.06880951, z: 0.76494366, w: 0.18948007}
+  m_LocalPosition: {x: -0.045, y: 0.0281, z: 0.2078}
+  m_LocalScale: {x: 0.39999998, y: 0.40000024, z: 0.40000024}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5499211285603095817}
+  m_LocalEulerAnglesHint: {x: 160.3, y: -104.9, z: -12.62}
+--- !u!135 &2077420665
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077420663}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2077420666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077420663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &2077420667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077420663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: f1b70c17d26d48845944382e2f570752, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &2102921207
 GameObject:
   m_ObjectHideFlags: 0
@@ -7165,6 +8298,109 @@ MonoBehaviour:
   m_ScaleMode: 1
   m_Offset: {x: 0, y: 0, z: 0}
   m_Size: {x: 0.5, y: 0.5, z: 0.1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &2134958243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134958244}
+  - component: {fileID: 2134958247}
+  - component: {fileID: 2134958246}
+  - component: {fileID: 2134958245}
+  m_Layer: 7
+  m_Name: WoundLacerationF6LH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2134958244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134958243}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.4624798, y: -0.5517697, z: 0.46531814, w: 0.5149192}
+  m_LocalPosition: {x: 0.0084, y: 0.0721, z: 0.1985}
+  m_LocalScale: {x: 0.39999998, y: 0.40000024, z: 0.40000024}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5499211285603095817}
+  m_LocalEulerAnglesHint: {x: 81.8, y: -104.9, z: -12.62}
+--- !u!135 &2134958245
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134958243}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2134958246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134958243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8435559d1d93f345aaa0a043dfba34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wound
+  radius: 0.4
+  pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
+  pointCount: 8
+  contactTimeout: 15
+  currentStage: 0
+  woundSeverityInt: 1
+  severityLevel: 1
+  pointsTouched: 
+--- !u!114 &2134958247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134958243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 8c73e11ef3af92f4182284e4ae02d77e, type: 2}
+  m_DrawDistance: 2000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 254
+  m_ScaleMode: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.2, z: 0.1}
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
@@ -8987,7 +10223,9 @@ Transform:
   - {fileID: 6896008881769944909}
   - {fileID: 8321329738338459833}
   - {fileID: 7682678115756743965}
+  - {fileID: 175236854}
   - {fileID: 7682678116494941155}
+  - {fileID: 645094688}
   m_Father: {fileID: 5499211285603095817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1940194302781597468
@@ -10005,7 +11243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -10033,7 +11271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -10061,7 +11299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: f1b70c17d26d48845944382e2f570752, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -10089,7 +11327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: ca706f2356bc26248a3cb5ab04ad6714, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -10117,7 +11355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -10145,7 +11383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -10173,7 +11411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -10201,7 +11439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
-  m_Material: {fileID: 2100000, guid: ff470276218e771408a5d9905ef36e5f, type: 2}
+  m_Material: {fileID: 2100000, guid: c69e9f15b1da429429be040230f60894, type: 2}
   m_DrawDistance: 2000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -12451,7 +13689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &5206607353188182799
 GameObject:
   m_ObjectHideFlags: 0
@@ -12676,6 +13914,8 @@ Transform:
   - {fileID: 2612410196793832936}
   - {fileID: 1921986851970526392}
   - {fileID: 7682678115490818047}
+  - {fileID: 2134958244}
+  - {fileID: 2077420664}
   m_Father: {fileID: 6514575601115751141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5520589469190183505
@@ -12991,7 +14231,9 @@ Transform:
   - {fileID: 1968254656684072454}
   - {fileID: 3335609544275699199}
   - {fileID: 851651595}
+  - {fileID: 1768559895}
   - {fileID: 483606679}
+  - {fileID: 385392021}
   m_Father: {fileID: 8128384288247955432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5803204007280856209
@@ -13008,9 +14250,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7682678116711363827}
+  - {fileID: 734693546}
   - {fileID: 7682678115684608451}
+  - {fileID: 393061631}
   - {fileID: 7682678116745817378}
+  - {fileID: 1475273647}
   - {fileID: 7682678115237168302}
+  - {fileID: 1542259819}
   m_Father: {fileID: 4888640068762257129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5808461370661964390
@@ -13904,6 +15150,7 @@ Transform:
   - {fileID: 6250161435941656554}
   - {fileID: 7918246157028413182}
   - {fileID: 1492293436}
+  - {fileID: 654475684}
   m_Father: {fileID: 2726927482021427618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7250012875919745152
@@ -14251,13 +15498,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8172443190221101043}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.47076058, y: -0.52700835, z: -0.55085534, w: -0.44407794}
-  m_LocalPosition: {x: 0.026, y: -0.0833, z: 0.1147}
+  m_LocalRotation: {x: 0.45553687, y: 0.5385622, z: 0.44403556, w: -0.55251193}
+  m_LocalPosition: {x: 0.0073, y: -0.0814, z: 0.184}
   m_LocalScale: {x: 0.39999998, y: 0.4000002, z: 0.40000024}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8128384288247955432}
-  m_LocalEulerAnglesHint: {x: -87.1, y: -88.535, z: -172.111}
+  m_LocalEulerAnglesHint: {x: 280.99, y: -88.535, z: 0}
 --- !u!4 &7682678115490818047
 Transform:
   m_ObjectHideFlags: 0
@@ -14297,7 +15544,7 @@ Transform:
   m_GameObject: {fileID: 8172443189489654855}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7543047, y: 0.105614595, z: -0.63799065, w: -0.113305025}
-  m_LocalPosition: {x: 0.0053, y: -0.0045, z: 0.6469}
+  m_LocalPosition: {x: 0.0115, y: -0.0066, z: 0.6436}
   m_LocalScale: {x: 0.39999998, y: 0.40000018, z: 0.40000024}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -14312,7 +15559,7 @@ Transform:
   m_GameObject: {fileID: 8172443191435811513}
   serializedVersion: 2
   m_LocalRotation: {x: -0.58376944, y: -0.39552698, z: -0.5863973, w: 0.39863518}
-  m_LocalPosition: {x: -0.0374, y: -0.0333, z: 0.1941}
+  m_LocalPosition: {x: -0.0239, y: -0.038, z: 0.1017}
   m_LocalScale: {x: 0.39999998, y: 0.40000018, z: 0.40000024}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -14918,7 +16165,7 @@ GameObject:
   - component: {fileID: 8656928551449746419}
   - component: {fileID: 4752778384463923075}
   m_Layer: 7
-  m_Name: WoundTestF13
+  m_Name: WoundLacerationF13LA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14937,7 +16184,7 @@ GameObject:
   - component: {fileID: 8656928551520186157}
   - component: {fileID: 4752778384402412381}
   m_Layer: 7
-  m_Name: WoundTestF2
+  m_Name: WoundScratchF2HeD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14956,7 +16203,7 @@ GameObject:
   - component: {fileID: 8656928550863061568}
   - component: {fileID: 4752778383909756464}
   m_Layer: 7
-  m_Name: WoundTestF4
+  m_Name: WoundScratchF4HeD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14975,7 +16222,7 @@ GameObject:
   - component: {fileID: 8656928550856577095}
   - component: {fileID: 4752778384269347895}
   m_Layer: 7
-  m_Name: WoundTestF9
+  m_Name: WoundScratchF9RA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14994,7 +16241,7 @@ GameObject:
   - component: {fileID: 8656928550646915345}
   - component: {fileID: 4752778384193813857}
   m_Layer: 7
-  m_Name: WoundTestF6
+  m_Name: WoundScratchF6LH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15013,7 +16260,7 @@ GameObject:
   - component: {fileID: 8656928552614048285}
   - component: {fileID: 4752778383510138477}
   m_Layer: 7
-  m_Name: WoundTestF1
+  m_Name: WoundScratchF1HeD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15032,7 +16279,7 @@ GameObject:
   - component: {fileID: 8656928552573037516}
   - component: {fileID: 4752778383341172668}
   m_Layer: 7
-  m_Name: WoundTestF3
+  m_Name: WoundScratchF3HeD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15051,7 +16298,7 @@ GameObject:
   - component: {fileID: 8656928551785291021}
   - component: {fileID: 4752778383054635389}
   m_Layer: 7
-  m_Name: WoundTestF11
+  m_Name: WoundSprainF11LA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15503,6 +16750,7 @@ Transform:
   - {fileID: 2726927482021427618}
   - {fileID: 7860849869826455003}
   - {fileID: 652535031}
+  - {fileID: 648221144}
   m_Father: {fileID: 1809600779734319918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8466128811711749659
