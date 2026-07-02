@@ -16,7 +16,7 @@ public class Civilian : Injury
     public bool isInjured;
 
     public GameObject[] bodyParts;
-    public GameObject headPart;
+    //public GameObject headPart;
 
     void Awake()
     {
