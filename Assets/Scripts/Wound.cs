@@ -75,14 +75,15 @@ public class Wound : MonoBehaviour
         {
             case WoundStage.Bleeding:
                 //gameobject particles turn on
+                
                 currentStage = WoundStage.NeedBandage;
                 break;
             
             case WoundStage.NeedBandage:
             //gameobject particles turn off
 
-                lastContactTime = Time.time;
-                if (Time.time - lastContactTime > contactTimeout)
+                lastContactTime += Time.deltaTime;
+                if (lastContactTime > contactTimeout)
                 {
                     isFailed = true;
                     OnFailed();
@@ -190,7 +191,7 @@ public class Wound : MonoBehaviour
         if (IsHealed || isFailed || !IsActive) return;
         if (pointsTouched[pointIndex]) return;
 
-        lastContactTime = Time.time;
+        lastContactTime = 0f; // Reset the contact timer
         pointsTouched[pointIndex] = true;
         pointsCompleted++;
 
@@ -239,16 +240,8 @@ public class Wound : MonoBehaviour
         currentLoop = 1;
         System.Array.Clear(pointsTouched, 0, pointsTouched.Length);
         isFailed = false;
-        lastContactTime = Time.time;
-        pointsGenerated = false;
+        lastContactTime = 0;
         
-        if (bandagingPoints != null)
-        {
-            foreach (GameObject point in bandagingPoints)
-                if (point != null)
-                    Destroy(point);
-            bandagingPoints = null;
-        }
         
         if (WoundManager.Instance != null)
             WoundManager.Instance.WoundFailed(this);
