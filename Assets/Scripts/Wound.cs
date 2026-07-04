@@ -33,6 +33,18 @@ public class Wound : MonoBehaviour
     }
     public WoundSeverity severityLevel = WoundSeverity.Minor;
 
+    public enum WoundType
+    {
+        Abrasion,
+        Scratch,
+        Laceration,
+        HeadInjury,
+        Sprain,
+        
+    }
+
+    public WoundType woundType;
+
     private bool isFailed = false;
     private GameObject[] bandagingPoints;
     public bool[] pointsTouched;

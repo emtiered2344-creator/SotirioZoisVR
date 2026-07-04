@@ -326,8 +326,8 @@ MonoBehaviour:
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &47502241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,12 +645,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &108779942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1517,12 +1517,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 2
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &164069254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1945,12 +1945,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 4
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &223942637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2281,12 +2281,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 4
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &298829213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2385,12 +2385,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 4
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &311417390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2489,12 +2489,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &327110665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2593,12 +2593,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &331631009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2984,12 +2984,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &417942609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,12 +3119,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 4
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &483472447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3223,12 +3223,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &500078082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3486,12 +3486,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 4
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &548689854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4762,12 +4762,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &746039632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4866,12 +4866,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &757600003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5128,12 +5128,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &852209460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5478,8 +5478,8 @@ MonoBehaviour:
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &880043274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6059,12 +6059,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 2
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &952993077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6163,12 +6163,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 3
+  woundType: 3
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &966958165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7122,12 +7122,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1140547499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7531,12 +7531,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 3
+  woundType: 3
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1267805445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8483,12 +8483,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 3
+  woundType: 3
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1353976860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8670,12 +8670,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1380661979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9010,12 +9010,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1458041431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9670,12 +9670,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1623355942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10475,12 +10475,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1799970920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10669,12 +10669,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 3
+  woundType: 3
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1803234907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11548,8 +11548,8 @@ MonoBehaviour:
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1912136550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11995,8 +11995,8 @@ MonoBehaviour:
   currentStage: 0
   woundSeverityInt: 1
   severityLevel: 2
+  woundType: 0
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1936295025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12342,12 +12342,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 1
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &1951570306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13357,12 +13357,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 4
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &2105347738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13461,12 +13461,12 @@ MonoBehaviour:
   radius: 0.4
   pointPrefab: {fileID: 1685309819253224951, guid: 7e5485d6934d73345bd630b7be460561, type: 3}
   pointCount: 8
-  contactTimeout: 3
+  contactTimeout: 5
   currentStage: 0
   woundSeverityInt: 1
-  severityLevel: 2
+  severityLevel: 1
+  woundType: 4
   pointsTouched: 
-  lastContactTime: 0
 --- !u!114 &2119593514
 MonoBehaviour:
   m_ObjectHideFlags: 0
