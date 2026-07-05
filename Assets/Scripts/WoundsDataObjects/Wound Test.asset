@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Wound Test
   m_EditorClassIdentifier: Assembly-CSharp::WoundData
   woundType: 0
-  woundSeverity: 1
+  woundSeverity: 2
   woundPrefab: {fileID: 8172443190114059207, guid: 18afd559d186f3a448c5ec2c50395111, type: 3}

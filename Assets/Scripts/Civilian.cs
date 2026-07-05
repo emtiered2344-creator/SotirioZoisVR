@@ -15,13 +15,19 @@ public class Civilian : Injury
     public float bloodLossRate;
     public bool isInjured;
 
-    public GameObject bodyParts;
-    public GameObject headPart;
+    public GameObject[] bodyParts;
+    //public GameObject headPart;
+
+    void Awake()
+    {
+        
+    }
 
     void Start()
     {
         currentState = CivilianState.Calm;
         isInjured = false;
+
     }
 
     // Update is called once per frame
@@ -38,22 +44,9 @@ public class Civilian : Injury
             case CivilianState.Injured:
                 if (!isInjured)
                 {
-                    RollInjury();
                     isInjured = true;
-                    for(int i = 0; i < numOfInjuries; i++)
-                    {
-                        //roll for body part.
-                        int bodyRoll = Random.Range(0, 101);
-                        if(bodyRoll <=80){
-                            //int bodyPartRoll = Random.Range(0, bodyParts.Length);
-                            //WoundRoll(bodyParts[bodyPartRoll].transform); //roll for injuries and wounds
-                            WoundRoll(bodyParts.transform); //roll for injuries and wounds, instantiate on body parts
-                        }
-                        else
-                        {
-                            WoundRoll(headPart.transform); //roll for injuries and wounds, instantiate on head part
-                        }
-                    }
+                    RollInjury();
+                    WoundRoll();
                 }
 
                 bloodLevel -= bloodLossRate * Time.deltaTime;

@@ -20,15 +20,10 @@ public class WoundDetection : MonoBehaviour
     [Tooltip("LayerMask for detecting wounds only.")]
     public LayerMask woundLayerMask;
 
-    [Header("Haptic Feedback")]
-    [Tooltip("Haptic intensity when selecting a wound.")]
-    public float hapticIntensity = 0.3f;
-
-    [Tooltip("Haptic duration when selecting a wound.")]
-    public float hapticDuration = 0.1f;
 
     private XRBaseInputInteractor interactor;
     private Wound touchedWound = null;
+
 
     void Start()
     {
@@ -77,10 +72,13 @@ public class WoundDetection : MonoBehaviour
             if (WoundManager.Instance.ActiveWound != touchedWound)
             {
                 WoundManager.Instance.ActiveWound = touchedWound;
-                //touchedWound.currentStage = Wound.WoundStage.NeedBandage; // Reset stage to NeedBandage when selected
-                if (interactor != null)
-                    interactor.SendHapticImpulse(hapticIntensity, hapticDuration);
             }
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

@@ -22,11 +22,36 @@ public class Wound : MonoBehaviour
 
     public WoundStage currentStage = WoundStage.Bleeding;
     private int pointsCompleted = 0;
+    private int currentLoop = 1;
+    public int woundSeverityInt = 1; // Number of loops required (set from woundData)
+
+    public enum WoundSeverity
+    {
+        Minor = 1,
+        Severe = 2,
+        Critical = 3
+    }
+    public WoundSeverity severityLevel = WoundSeverity.Minor;
+
+    public enum WoundType
+    {
+        Abrasion,
+        Scratch,
+        Laceration,
+        HeadInjury,
+        Sprain,
+        
+    }
+
+    public WoundType woundType;
+
     private bool isFailed = false;
     private GameObject[] bandagingPoints;
-    private bool[] pointsTouched;
+    public bool[] pointsTouched;
     private float lastContactTime = 0f;
     private bool pointsGenerated = false;
+    private Collider woundCollider;
+    float bleedtimer;
 
     public WoundStage Stage => currentStage;
     public bool IsHealed => currentStage == WoundStage.Healed;
@@ -35,8 +60,23 @@ public class Wound : MonoBehaviour
 
     void Start()
     {
+        GenerateBandagingPoints();
         SetPointsVisibility(false);
+        
+        pointsGenerated = true;
+        
+        woundCollider = GetComponent<Collider>();
         currentStage = WoundStage.Bleeding;
+
+        woundSeverityInt = severityLevel switch
+        {
+            WoundSeverity.Minor => 1,
+            WoundSeverity.Severe => 2,
+            WoundSeverity.Critical => 3,
+            _ => 1
+        };
+
+        gameObject.SetActive(false); // Deactivate the wound until it is needed
     }
 
     void Update()
@@ -46,19 +86,16 @@ public class Wound : MonoBehaviour
         switch (currentStage)
         {
             case WoundStage.Bleeding:
+                //gameobject particles turn on
+                
                 currentStage = WoundStage.NeedBandage;
                 break;
             
             case WoundStage.NeedBandage:
-                if (!pointsGenerated)
-                {
-                    GenerateBandagingPoints();
-                    SetPointsVisibility(true);
-                    pointsGenerated = true;
-                    lastContactTime = Time.time;
-                }
-                
-                if (Time.time - lastContactTime > contactTimeout)
+            //gameobject particles turn off
+
+                lastContactTime += Time.deltaTime;
+                if (lastContactTime > contactTimeout)
                 {
                     isFailed = true;
                     OnFailed();
@@ -71,85 +108,66 @@ public class Wound : MonoBehaviour
         }
     }
 
-    void GenerateBandagingPoints()
+    public void GenerateBandagingPoints()
     {
         bandagingPoints = new GameObject[pointCount];
         pointsTouched = new bool[pointCount];
 
-        MeshCollider parentMesh = transform.parent?.GetComponent<MeshCollider>();
-        if (parentMesh == null)
+        Transform parent = transform.parent;
+        if (parent == null)
         {
-            Debug.LogWarning("Parent object needs a MeshCollider!");
+            Debug.LogWarning("Wound needs a parent body part!" + gameObject.name);
             return;
         }
 
-        // Increase radius if not a head
+        Collider parentCollider = GetParentCollider(parent);
+        if (parentCollider == null)
+        {
+            Debug.LogWarning("Parent object needs a primitive collider for wound placement!");
+            return;
+        }
+
+        // Increase radius based on body part tag
         float effectiveRadius = radius;
-        float prefabScale = 0.1f;
+        float prefabScale = 0.07f;
 
-        if (transform.parent != null && !transform.parent.name.ToLower().Contains("head"))
+        if (parent.CompareTag("Head"))
         {
-            effectiveRadius = radius * 2.3f;
-            prefabScale = 0.15f; // Scale the prefab size for non-head parts
+            effectiveRadius = radius * 5.5f;
+            //prefabScale = 0.1f;
+        }
+        else if (parent.CompareTag("Torso"))
+        {
+            effectiveRadius = radius * 6f;
+            //prefabScale = 0.1f;
+        }
+        else if (parent.CompareTag("Legs"))
+        {
+            effectiveRadius = radius * 3.5f;
+            //prefabScale = 0.1f;
+        }
+        else if (parent.CompareTag("Arms"))
+        {
+            effectiveRadius = radius * 4f;
+            //prefabScale = 0.15f;
         }
 
-        // Get surface normal via raycast for robust positioning
-        Vector3 normal = Vector3.up;
-        Ray ray = new Ray(transform.position + transform.up * 0.01f, transform.up);
-
-        RaycastHit hit;
-        if (parentMesh.Raycast(ray, out hit, 1f))
-            normal = hit.normal;
-        else
-            Debug.LogWarning("Could not determine surface normal, using transform.up");
-
-        // Check if normal is near horizontal (vertical component is small)
-        if (Mathf.Abs(normal.y) < 0.3f && transform.parent != null)
-        {
-            // Find the most vertical axis from parent transform
-            float upDot = Mathf.Abs(Vector3.Dot(transform.parent.up, Vector3.up));
-            float rightDot = Mathf.Abs(Vector3.Dot(transform.parent.right, Vector3.up));
-            float forwardDot = Mathf.Abs(Vector3.Dot(transform.parent.forward, Vector3.up));
-
-            if (upDot >= rightDot && upDot >= forwardDot)
-            {
-                // Use parent's up as the circle orientation
-                normal = transform.parent.up;
-            }
-            else if (rightDot >= forwardDot)
-            {
-                // Use parent's right as the circle orientation
-                normal = transform.parent.right;
-            }
-            else
-            {
-                // Use parent's forward as the circle orientation
-                normal = transform.parent.forward;
-            }
-        }
-
-        // Build orthonormal basis for the circle
-        Vector3 arbitrary = Vector3.right;
-        if (Mathf.Abs(Vector3.Dot(normal, arbitrary)) > 0.99f)
-            arbitrary = Vector3.forward;
-
-        Vector3 right = Vector3.Cross(normal, arbitrary).normalized;
-
-        // Generate points around the circle (perpendicular to surface plane)
         for (int i = 0; i < pointCount; i++)
         {
             float angle = (360f / pointCount) * i * Mathf.Deg2Rad;
-            // Calculate position in world space using right and normal basis vectors
-            Vector3 localPos = (Mathf.Cos(angle) * right + Mathf.Sin(angle) * normal) * effectiveRadius;
+            Vector3 localPos = new Vector3(
+                0f,
+                Mathf.Sin(angle) * effectiveRadius,
+                Mathf.Cos(angle) * effectiveRadius);
             Vector3 pointPosition = transform.TransformPoint(localPos);
 
-            // Project onto mesh surface to handle curvature
-            pointPosition = GetClosestPointOnMesh(pointPosition, parentMesh);
+            pointPosition = GetClosestPointOnCollider(pointPosition, parentCollider, parent);
 
             GameObject point = Instantiate(pointPrefab, pointPosition, Quaternion.identity, transform);
             point.name = $"BandagePoint_{i}";
             point.tag = "BandagePoint";
             point.transform.localScale = Vector3.one * prefabScale;
+            point.transform.localRotation = Quaternion.identity;
 
             Collider col = point.GetComponent<Collider>();
             if (col != null) col.isTrigger = true;
@@ -160,9 +178,16 @@ public class Wound : MonoBehaviour
         }
     }
 
-    Vector3 GetClosestPointOnMesh(Vector3 position, MeshCollider meshCollider)
+    Collider GetParentCollider(Transform parent)
     {
-        return meshCollider.ClosestPoint(position);
+        if (parent == null) return null;
+        return parent.GetComponent<Collider>();
+    }
+
+    Vector3 GetClosestPointOnCollider(Vector3 position, Collider parentCollider, Transform parent)
+    {
+        if (parent == null || parentCollider == null) return position;
+        return parentCollider.ClosestPoint(position);
     }
 
     public void SetPointsVisibility(bool visible)
@@ -178,13 +203,25 @@ public class Wound : MonoBehaviour
         if (IsHealed || isFailed || !IsActive) return;
         if (pointsTouched[pointIndex]) return;
 
-        lastContactTime = Time.time;
+        lastContactTime = 0f; // Reset the contact timer
         pointsTouched[pointIndex] = true;
         pointsCompleted++;
 
         if (pointsCompleted >= pointCount)
         {
-            OnHealed();
+            // Check if we've completed all required loops
+            if (currentLoop >= woundSeverityInt)
+            {
+                OnHealed();
+            }
+            else
+            {
+                // Reset for next loop
+                currentLoop++;
+                pointsCompleted = 1;
+                System.Array.Clear(pointsTouched, 0, pointsTouched.Length);
+                SetPointsVisibility(true);
+            }
         }
     }
 
@@ -194,25 +231,29 @@ public class Wound : MonoBehaviour
         currentStage = WoundStage.Healed;
         if (WoundManager.Instance != null)
             WoundManager.Instance.WoundHealed(this);
-        Destroy(gameObject, 1f); // TODO: change to decal bandaged
+        Injury injury = transform.root.GetComponent<Injury>();
+        if (injury != null)
+        {
+            injury.currentWounds.Remove(gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("Injury component not found on root object.");
+        }
+        
+        Destroy(gameObject); // TODO: change to decal bandaged
+        
     }
 
     void OnFailed()
     {
-        //currentStage = WoundStage.Bleeding;
+        currentStage = WoundStage.Bleeding;
         pointsCompleted = 0;
+        currentLoop = 1;
         System.Array.Clear(pointsTouched, 0, pointsTouched.Length);
         isFailed = false;
-        lastContactTime = Time.time;
-        pointsGenerated = false;
+        lastContactTime = 0;
         
-        if (bandagingPoints != null)
-        {
-            foreach (GameObject point in bandagingPoints)
-                if (point != null)
-                    Destroy(point);
-            bandagingPoints = null;
-        }
         
         if (WoundManager.Instance != null)
             WoundManager.Instance.WoundFailed(this);
@@ -221,11 +262,31 @@ public class Wound : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         float displayRadius = radius;
-        float gizmoScale = 1f;
-        if (transform.parent != null && !transform.parent.name.ToLower().Contains("head"))
+        float gizmoScale = radius;
+        
+        if (transform.parent != null)
         {
-            displayRadius = radius * 2f;
-            gizmoScale = 1.5f;
+            if (transform.parent.CompareTag("Head"))
+            {
+                displayRadius = radius*5.5f;
+                //gizmoScale = 1f;
+            }
+            else if (transform.parent.CompareTag("Torso"))
+            {
+                displayRadius = radius * 6f;
+                //gizmoScale = 2f;
+            }
+
+            else if (transform.parent.CompareTag("Legs"))
+            {
+                displayRadius = radius * 3.5f;
+                //gizmoScale = 1.5f;
+            }
+            else if (transform.parent.CompareTag("Arms"))
+            {
+                displayRadius = radius * 4f;
+                //gizmoScale = 1.5f;
+            }
         }
 
         Gizmos.color = Color.red;
@@ -239,6 +300,28 @@ public class Wound : MonoBehaviour
             {
                 if (point != null)
                     Gizmos.DrawSphere(point.transform.position, 0.02f * gizmoScale);
+            }
+        }
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Cloth") && currentStage == WoundStage.Bleeding)
+        {
+            if (other.bounds.Contains(woundCollider.bounds.max) && other.bounds.Contains(woundCollider.bounds.min))
+            {
+                bleedtimer += Time.deltaTime;
+                if (bleedtimer >= 3f)
+                {
+                    currentStage = WoundStage.NeedBandage;
+                    bleedtimer = 0;
+                    Debug.Log("Wound stage changed to NeedBandage due to cloth contact.");
+                }
+                
+            }
+            else
+            {
+                bleedtimer = 0;
+                Debug.Log("Cloth is not fully covering the wound.");
             }
         }
     }
