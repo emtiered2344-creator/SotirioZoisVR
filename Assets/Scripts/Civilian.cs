@@ -18,6 +18,8 @@ public class Civilian : Injury
     public GameObject[] bodyParts;
     //public GameObject headPart;
 
+    CivilianAI civilianAI;
+
     void Awake()
     {
         
@@ -27,7 +29,8 @@ public class Civilian : Injury
     {
         currentState = CivilianState.Calm;
         isInjured = false;
-
+        civilianAI = GetComponent<CivilianAI>();
+        //civilianAI.DisableRagdoll(bodyParts);
     }
 
     // Update is called once per frame
@@ -50,6 +53,11 @@ public class Civilian : Injury
                 }
 
                 bloodLevel -= bloodLossRate * Time.deltaTime;
+                if(injuryCause == InjuryCause.Trip)
+                {
+                    civilianAI.EnableRagdoll(bodyParts);
+                }
+
                 if (bloodLevel <= 0)
                 {
                     //Die();
