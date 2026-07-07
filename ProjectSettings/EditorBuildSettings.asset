@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: ade700fb000d9c949a88311b42e3f875
+  - enabled: 1
+    path: Assets/Scenes/BandagingLevel.unity
+    guid: f60c2d6e6b295ab4a86ced50b4d6c526
+  - enabled: 1
+    path: Assets/Scenes/OfficeSim.unity
+    guid: c73d53af08f076144ae4fc0a8a9153e1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c6112976f9b1f444190d615b29356762, type: 2}
