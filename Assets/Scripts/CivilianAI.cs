@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class CivilianAI : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class CivilianAI : MonoBehaviour
             if (rb != null)
             {
                 rb.isKinematic = false;
+            }
+
+            XRGrabInteractable grabInteractable = part.GetComponent<XRGrabInteractable>();
+            if (grabInteractable != null)
+            {
+                grabInteractable.enabled = true;
             }
         }
 

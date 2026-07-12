@@ -17,6 +17,7 @@ public class Civilian : Injury
     public float bloodLevel = 100f;
     public float bloodLossRate;
     public bool isInjured;
+    public bool isUnconscious;
 
     public GameObject[] bodyParts;
     //public GameObject headPart;
@@ -60,7 +61,7 @@ public class Civilian : Injury
                 }
 
                 bloodLevel -= bloodLossRate * Time.deltaTime;
-                if(injuryCause == InjuryCause.Trip)
+                if(injuryCause == InjuryCause.Trip && isUnconscious)
                 {
                     civilianAI.EnableRagdoll(bodyParts);
                 }
