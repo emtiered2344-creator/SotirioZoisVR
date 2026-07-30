@@ -58,7 +58,7 @@ public class Wound : MonoBehaviour
     public bool IsFailed => isFailed;
     public bool IsActive => WoundManager.Instance != null && WoundManager.Instance.ActiveWound == this;
 
-    void Start()
+    void Awake()
     {
         GenerateBandagingPoints();
         SetPointsVisibility(false);

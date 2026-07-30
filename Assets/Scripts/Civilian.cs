@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Civilian : Injury
@@ -8,15 +9,20 @@ public class Civilian : Injury
         Panicked,
         Injured
     }
+    public bool testSim;
+
     public CivilianState currentState;
     [Header("Civilian Attributes")]
     float speed = 2f;
     public float bloodLevel = 100f;
     public float bloodLossRate;
     public bool isInjured;
+    public bool isUnconscious;
 
     public GameObject[] bodyParts;
     //public GameObject headPart;
+
+    CivilianAI civilianAI;
 
     void Awake()
     {
@@ -27,7 +33,12 @@ public class Civilian : Injury
     {
         currentState = CivilianState.Calm;
         isInjured = false;
-
+        civilianAI = GetComponent<CivilianAI>();
+        //civilianAI.DisableRagdoll(bodyParts);
+        if(testSim)
+        {
+            StartCoroutine(test());
+        }
     }
 
     // Update is called once per frame
@@ -50,6 +61,11 @@ public class Civilian : Injury
                 }
 
                 bloodLevel -= bloodLossRate * Time.deltaTime;
+                if(injuryCause == InjuryCause.Trip && isUnconscious)
+                {
+                    civilianAI.EnableRagdoll(bodyParts);
+                }
+
                 if (bloodLevel <= 0)
                 {
                     //Die();
@@ -57,4 +73,13 @@ public class Civilian : Injury
                 break;
         }
     }
+
+    private IEnumerator test()
+    {
+        yield return new WaitForSeconds(5f);
+        currentState = CivilianState.Injured;
+        StopCoroutine(test());
+    }
+
+    
 }
