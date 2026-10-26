@@ -5,6 +5,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject SelectionMenu;
     [SerializeField] private GameObject TrainingMenu;
+    [SerializeField] private GameObject SimulationMenu;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class MainMenuManager : MonoBehaviour
         mainMenu.SetActive(false);
         SelectionMenu.SetActive(false);
         TrainingMenu.SetActive(false);
+        SimulationMenu.SetActive(false);
     }
 
     public void ShowMainMenu()
@@ -34,5 +36,10 @@ public class MainMenuManager : MonoBehaviour
     {
         ClearMenus();
         TrainingMenu.SetActive(true);
+    }
+    public void ShowSimulationMenu()
+    {
+        ClearMenus();
+        SimulationMenu.SetActive(true);
     }
 }
